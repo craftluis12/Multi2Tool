@@ -7,6 +7,11 @@ int main() {
 	std::string os = "";
 	std::cout << "What operating system are you using?: ";
 	std::cin >> os;
+	
+	for(auto& x : os){//This code Lowers any upper case letters
+		x = tolower(x);
+	};
+	
 	if (os == "windows"){
 		//windows
 		system("cls");
@@ -28,7 +33,7 @@ int main() {
 			std::cout << "\n1.Privesec_List"; 
 			std::cout << "\n2.Reverse_Shells_List"; 
 			std::cout << "\n3.hash_Identifier_List"; 
-			std::cout << "\n4.Coming Soon\n"; 
+			std::cout << "\n4.Quick_Ping_Tool\n"; 
 			//end of tool list
 			
 			//to choose a tool from the list using number
@@ -107,6 +112,41 @@ int main() {
 				};
 			};
 			//end Hash_Identifier
+			//Quick_Ping_Tool
+			if(tool == 4){
+				std::system("cls");
+				std::cout << "\nWelcome To The Ping Tool\n";
+	
+				std::string wait  = "";
+				std::string how_many = ""; 
+			    std::string size = "";    
+			    std::string ip = "";
+			    
+			    std::cout << "What is the ip you want to ping? ";
+			    std::cin >> ip;
+			    
+				std::cout << "How many packets do you want to send? ";
+				std::cin >> how_many;
+				
+				std::cout << "How many bytes do you want to send 0-65,500? ";
+				std::cin >> size;
+				std::system("cls");
+			    std::string command = "ping "  + ip + " -n " + how_many + " -l " + size;
+			
+			    std::system(command.c_str());
+				
+				std::cout << "\nType exit to end or back to return to menu: ";
+			    std::cin >> wait;
+			    if(wait == "exit"){
+			    	std::cout << "Bye!";
+				}else if(wait == "back"){
+					system("cls");
+	  		   		continue;
+				}else{
+					std::cout << "Please type Exit!!!";
+				};
+			};
+			//end Quick_Ping_Tool
 			return 0;
 		}
 	} else if(os == "linux"){
@@ -129,7 +169,7 @@ int main() {
 			std::cout << "\n1.Privesec_List"; 
 			std::cout << "\n2.Reverse_Shells_List"; 
 			std::cout << "\n3.hash_Identifier_List"; 
-			std::cout << "\n4.Coming Soon\n"; 
+			std::cout << "\n4.Quick_Ping_Tool\n"; 
 			//end of tool list
 			
 			//to choose a tool from the list using number
@@ -208,7 +248,44 @@ int main() {
 				};
 			};
 			//end Hash_Identifier
+			
+			//Quick_Ping_Tool
+			if(tool == 4){
+				std::system("clear");
+				std::cout << "\nWelcome To The Ping Tool\n";
+	
+				std::string wait  = "";
+				std::string how_many = ""; 
+			    std::string size = "";    
+			    std::string ip = "";
+			    
+			    std::cout << "What is the ip you want to ping? ";
+			    std::cin >> ip;
+			    
+				std::cout << "How many packets do you want to send? ";
+				std::cin >> how_many;
+				
+				std::cout << "How many bytes do you want to send 0-65,500? ";
+				std::cin >> size;
+				std::system("clear");
+			    std::string command = "ping "  + ip + " -n " + how_many + " -l " + size;
+			
+			    std::system(command.c_str());
+				
+				std::cout << "\nType exit to end or back to return to menu: ";
+			    std::cin >> wait;
+			    if(wait == "exit"){
+			    	std::cout << "Bye!";
+				}else if(wait == "back"){
+					system("clear");
+	  		   		continue;
+				}else{
+					std::cout << "Please type Exit!!!";
+				};
+			};
+			//end Quick_Ping_Tool
 			return 0;
+			
 		}
 	} else{
 		std::cout << "Error Unknow OS System!!";
