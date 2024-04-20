@@ -62,15 +62,39 @@ int main() {
 				}
 				if(privsec == 1){
 					system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 				if(privsec == 2){
 					system("curl -s -L -O https://raw.githubusercontent.com/rebootuser/LinEnum/c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 				if(privsec == 3){
 					system("curl -s -L -O https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 			};
 			//end Prive sec
@@ -89,7 +113,15 @@ int main() {
 				}
 				if(reverse == 1){
 					system("curl -s -L -O https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 			};
 			//end reverseshell
@@ -107,8 +139,16 @@ int main() {
 	  		   		continue;
 				}
 				if(hash == 1){
-				system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
-				should_run = false;
+					system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 			};
 			//end Hash_Identifier
@@ -198,15 +238,39 @@ int main() {
 				}
 				if(privsec == 1){
 					system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 				if(privsec == 2){
 					system("curl -s -L -O https://raw.githubusercontent.com/rebootuser/LinEnum/c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 				if(privsec == 3){
 					system("curl -s -L -O https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 			};
 			//end Prive sec
@@ -225,7 +289,15 @@ int main() {
 				}
 				if(reverse == 1){
 					system("curl -s -L -O https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
-					should_run = false;
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 			};
 			//end reverseshell
@@ -243,8 +315,16 @@ int main() {
 	  		   		continue;
 				}
 				if(hash == 1){
-				system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
-				should_run = false;
+					system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
+					std::string ex = "";
+					std::cout << "Type exit to end or back to go to menu: ";
+					std::cin >> ex;
+					if(ex == "back"){
+						system("cls");
+						continue;
+					}else{
+						break;
+					};
 				};
 			};
 			//end Hash_Identifier
