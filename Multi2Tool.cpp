@@ -3,19 +3,19 @@
 #include <stdio.h>
 using std::string;
 
-void clear(string vr);
+void intro_clear(string os);
 void print_intro();
 string input(string text);
 
 int main()
 {
-	string os = input("What operating system are you using?: ");
+    string os = input("What operating system are you using?: ");
 
-	for(auto& x : os){ // This code Lowers any upper case letters
+    for(auto& x : os) { // This code Lowers any upper case letters
         x = tolower(x);
     };
 
-    clear(os);
+    intro_clear(os);
     bool should_run = true;
     while(should_run) {
         if(os != "windows" && os != "linux") {
@@ -23,8 +23,8 @@ int main()
             os = input("What operating system are you using?: ");
             continue;
         };
-        
-		clear(os);
+
+        intro_clear(os);
         print_intro();
 
         // to choose a tool from the list using number
@@ -32,7 +32,7 @@ int main()
         std::cout << "\nAnswer: ";
         std::cin >> tool;
         // end of choosing tool
-        
+
         // Prive sec file dir
         if(tool == 1) {
             string privsec = "";
@@ -63,12 +63,12 @@ int main()
                     };
                     system("cls");
                     continue;
-                } else { 
-                	break;
+                } else {
+                    break;
                 };
-            }else {
-            	break;
-			}
+            } else {
+                break;
+            }
             if(privsec == "2") {
                 system("curl -s -L -O "
                        "https://raw.githubusercontent.com/rebootuser/LinEnum/"
@@ -84,11 +84,11 @@ int main()
                     system("cls");
                     continue;
                 } else {
-                	break;
+                    break;
                 };
-            }else {
-            	break;
-			};
+            } else {
+                break;
+            };
             if(privsec == "3") {
                 system("curl -s -L -O "
                        "https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/"
@@ -104,12 +104,12 @@ int main()
                     system("cls");
                     continue;
                 } else {
-                	std::cout << "The break work for privsec number 3";
-                	break;
+                    std::cout << "The break work for privsec number 3";
+                    break;
                 };
-            }else {
-            	break;
-			};
+            } else {
+                break;
+            };
         };
         // end Prive sec
 
@@ -146,9 +146,9 @@ int main()
                 } else {
                     break;
                 };
-            }else {
-            	break;
-			};
+            } else {
+                break;
+            };
         };
         // end reverseshell
 
@@ -183,12 +183,12 @@ int main()
                 } else {
                     break;
                 };
-            }else {
-            	break;
-			};
+            } else {
+                break;
+            };
         };
         // end Hash_Identifier
-        
+
         // Quick_Ping_Tool
         if(tool == 4) {
             std::system("cls");
@@ -226,13 +226,12 @@ int main()
             } else {
                 break;
             };
-			// end Quick_Ping_Tool
-        }else{
-			break;
-		};
-        
+            // end Quick_Ping_Tool
+        } else {
+            break;
+        };
     };
-    
+
     return 0;
 };
 
@@ -256,17 +255,19 @@ void print_intro()
     std::cout << "\n4.Quick_Ping_Tool\n";
     std::cout << "\n5.Coming_Soon\n";
 };
-string input(string text){
+string input(string text)
+{
     std::cout << text;
     std::string os = "";
     std::cin >> os;
     return std::move(os);
 };
-void clear(string vr){
-    if(vr == "windows") {
+void intro_clear(string os)
+{
+    if(os == "windows") {
         system("cls");
         system("Color E");
-    } else if(vr == "linux") {
+    } else if(os == "linux") {
         system("clear");
     };
 }
