@@ -3,27 +3,19 @@
 #include <stdio.h>
 using std::string;
 
+void clear(string vr);
 void print_intro();
 string input(string text);
 
 int main()
 {
-    string os = input("What operating system are you using?: ");
+	string os = input("What operating system are you using?: ");
 
-    for(auto& x : os) { // This code Lowers any upper case letters
+	for(auto& x : os){ // This code Lowers any upper case letters
         x = tolower(x);
     };
-    if(os == "exit") {
-        system("exit");
-    }
 
-    // windows
-    if(os == "windows") {
-        system("cls");
-        system("Color E");
-    } else if(os == "linux") {
-        system("clear");
-    }
+    clear(os);
     bool should_run = true;
     while(should_run) {
         if(os != "windows" && os != "linux") {
@@ -31,26 +23,19 @@ int main()
             os = input("What operating system are you using?: ");
             continue;
         };
+        
+		clear(os);
         print_intro();
-        // end of tool list
 
         // to choose a tool from the list using number
         int tool = 0;
         std::cout << "\nAnswer: ";
         std::cin >> tool;
         // end of choosing tool
-        if(tool == 0) {
-            if(os == "linux") {
-                system("clear");
-                continue;
-            }
-            system("cls");
-            continue;
-        }
-
+        
         // Prive sec file dir
         if(tool == 1) {
-            int privsec = 0;
+            string privsec = "";
             std::cout << "\nPrivesec_List\n";
             std::cout << "1: LinPeas.sh";
             std::cout << "\n2: LinEnum.sh";
@@ -58,15 +43,15 @@ int main()
 
             std::cout << "\nAnswer: ";
             std::cin >> privsec;
-            if(privsec == 0) {
+            if(privsec == "back") {
                 if(os == "linux") {
                     system("clear");
                     continue;
-                }
+                };
                 system("cls");
                 continue;
-            }
-            if(privsec == 1) {
+            };
+            if(privsec == "1") {
                 system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
                 std::string ex = "";
                 std::cout << "Type exit to end or back to go to menu: ";
@@ -75,14 +60,16 @@ int main()
                     if(os == "linux") {
                         system("clear");
                         continue;
-                    }
+                    };
                     system("cls");
                     continue;
-                } else {
-                    break;
+                } else { 
+                	break;
                 };
-            };
-            if(privsec == 2) {
+            }else {
+            	break;
+			}
+            if(privsec == "2") {
                 system("curl -s -L -O "
                        "https://raw.githubusercontent.com/rebootuser/LinEnum/"
                        "c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
@@ -93,14 +80,16 @@ int main()
                     if(os == "linux") {
                         system("clear");
                         continue;
-                    }
+                    };
                     system("cls");
                     continue;
                 } else {
-                    break;
+                	break;
                 };
-            };
-            if(privsec == 3) {
+            }else {
+            	break;
+			};
+            if(privsec == "3") {
                 system("curl -s -L -O "
                        "https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/"
                        "eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
@@ -111,33 +100,36 @@ int main()
                     if(os == "linux") {
                         system("clear");
                         continue;
-                    }
+                    };
                     system("cls");
                     continue;
                 } else {
-                    break;
+                	std::cout << "The break work for privsec number 3";
+                	break;
                 };
-            };
+            }else {
+            	break;
+			};
         };
         // end Prive sec
 
         // Reverseshells file dir
         if(tool == 2) {
-            int reverse = 0;
+            string reverse = "";
             std::cout << "\nReverse_Shells_List\n";
             std::cout << "1: PHP_Reverse_Shell";
 
             std::cout << "\nAnswer: ";
             std::cin >> reverse;
-            if(reverse == 0) {
+            if(reverse == "back") {
                 if(os == "linux") {
                     system("clear");
                     continue;
-                }
+                };
                 system("cls");
                 continue;
-            }
-            if(reverse == 1) {
+            };
+            if(reverse == "1") {
                 system("curl -s -L -O "
                        "https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/"
                        "8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
@@ -148,33 +140,35 @@ int main()
                     if(os == "linux") {
                         system("clear");
                         continue;
-                    }
+                    };
                     system("cls");
                     continue;
                 } else {
                     break;
                 };
-            };
+            }else {
+            	break;
+			};
         };
         // end reverseshell
 
         // Hash_Identifier file dir
         if(tool == 3) {
-            int hash = 0;
+            string hash = "";
             std::cout << "\nHash_Identifier_List\n";
             std::cout << "1: Hash_ID.py";
 
             std::cout << "\nAnswer: ";
             std::cin >> hash;
-            if(hash == 0) {
+            if(hash == "back") {
                 if(os == "linux") {
                     system("clear");
                     continue;
-                }
+                };
                 system("cls");
                 continue;
-            }
-            if(hash == 1) {
+            };
+            if(hash == "1") {
                 system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
                 std::string ex = "";
                 std::cout << "Type exit to end or back to go to menu: ";
@@ -183,15 +177,18 @@ int main()
                     if(os == "linux") {
                         system("clear");
                         continue;
-                    }
+                    };
                     system("cls");
                     continue;
                 } else {
                     break;
                 };
-            };
+            }else {
+            	break;
+			};
         };
         // end Hash_Identifier
+        
         // Quick_Ping_Tool
         if(tool == 4) {
             std::system("cls");
@@ -223,16 +220,19 @@ int main()
                 if(os == "linux") {
                     system("clear");
                     continue;
-                }
+                };
                 system("cls");
                 continue;
             } else {
-                std::cout << "Please type Exit!!!";
+                break;
             };
-        };
-        // end Quick_Ping_Tool
-    }
-
+			// end Quick_Ping_Tool
+        }else{
+			break;
+		};
+        
+    };
+    
     return 0;
 };
 
@@ -254,11 +254,19 @@ void print_intro()
     std::cout << "\n2.Reverse_Shells_List";
     std::cout << "\n3.hash_Identifier_List";
     std::cout << "\n4.Quick_Ping_Tool\n";
-}
-string input(string text)
-{
+    std::cout << "\n5.Coming_Soon\n";
+};
+string input(string text){
     std::cout << text;
     std::string os = "";
     std::cin >> os;
-    return os;
+    return std::move(os);
+};
+void clear(string vr){
+    if(vr == "windows") {
+        system("cls");
+        system("Color E");
+    } else if(vr == "linux") {
+        system("clear");
+    };
 }
