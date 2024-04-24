@@ -1,11 +1,11 @@
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
-#include <time.h>
 using std::string;
 
 void intro_clear(string os);
 void print_intro();
+void os_clear(string os);
 string input(string text);
 
 int main()
@@ -29,13 +29,13 @@ int main()
         print_intro();
 
         // to choose a tool from the list using number
-        std::string tool = "";
+        int tool = 0;
         std::cout << "\nAnswer: ";
         std::cin >> tool;
         // end of choosing tool
 
         // Prive sec file dir
-        if(tool == "1") {
+        if(tool == 1) {
             string privsec = "";
             std::cout << "\nPrivesec_List\n";
             std::cout << "1: LinPeas.sh";
@@ -45,11 +45,7 @@ int main()
             std::cout << "\nAnswer: ";
             std::cin >> privsec;
             if(privsec == "back") {
-                if(os == "linux") {
-                    system("clear");
-                    continue;
-                };
-                system("cls");
+                os_clear(os);
                 continue;
             };
             if(privsec == "1") {
@@ -58,11 +54,7 @@ int main()
                 std::cout << "Type exit to end or back to go to menu: ";
                 std::cin >> ex;
                 if(ex == "back") {
-                    if(os == "linux") {
-                        system("clear");
-                        continue;
-                    };
-                    system("cls");
+                    os_clear(os);
                     continue;
                 } else {
                     break;
@@ -78,11 +70,7 @@ int main()
                 std::cout << "Type exit to end or back to go to menu: ";
                 std::cin >> ex;
                 if(ex == "back") {
-                    if(os == "linux") {
-                        system("clear");
-                        continue;
-                    };
-                    system("cls");
+                    os_clear(os);
                     continue;
                 } else {
                     break;
@@ -98,13 +86,10 @@ int main()
                 std::cout << "Type exit to end or back to go to menu: ";
                 std::cin >> ex;
                 if(ex == "back") {
-                    if(os == "linux") {
-                        system("clear");
-                        continue;
-                    };
-                    system("cls");
+                    os_clear(os);
                     continue;
                 } else {
+                    std::cout << "The break work for privsec number 3";
                     break;
                 };
             } else {
@@ -114,7 +99,7 @@ int main()
         // end Prive sec
 
         // Reverseshells file dir
-        if(tool == "2") {
+        if(tool == 2) {
             string reverse = "";
             std::cout << "\nReverse_Shells_List\n";
             std::cout << "1: PHP_Reverse_Shell";
@@ -122,11 +107,7 @@ int main()
             std::cout << "\nAnswer: ";
             std::cin >> reverse;
             if(reverse == "back") {
-                if(os == "linux") {
-                    system("clear");
-                    continue;
-                };
-                system("cls");
+                os_clear(os);
                 continue;
             };
             if(reverse == "1") {
@@ -137,11 +118,7 @@ int main()
                 std::cout << "Type exit to end or back to go to menu: ";
                 std::cin >> ex;
                 if(ex == "back") {
-                    if(os == "linux") {
-                        system("clear");
-                        continue;
-                    };
-                    system("cls");
+                    os_clear(os);
                     continue;
                 } else {
                     break;
@@ -153,7 +130,7 @@ int main()
         // end reverseshell
 
         // Hash_Identifier file dir
-        if(tool == "3") {
+        if(tool == 3) {
             string hash = "";
             std::cout << "\nHash_Identifier_List\n";
             std::cout << "1: Hash_ID.py";
@@ -161,11 +138,7 @@ int main()
             std::cout << "\nAnswer: ";
             std::cin >> hash;
             if(hash == "back") {
-                if(os == "linux") {
-                    system("clear");
-                    continue;
-                };
-                system("cls");
+                os_clear(os);
                 continue;
             };
             if(hash == "1") {
@@ -174,11 +147,7 @@ int main()
                 std::cout << "Type exit to end or back to go to menu: ";
                 std::cin >> ex;
                 if(ex == "back") {
-                    if(os == "linux") {
-                        system("clear");
-                        continue;
-                    };
-                    system("cls");
+                    os_clear(os);
                     continue;
                 } else {
                     break;
@@ -190,12 +159,12 @@ int main()
         // end Hash_Identifier
 
         // Quick_Ping_Tool
-        if(tool == "4") {
-        	if(os == "linux"){
+        if(tool == 4) {
+            if(os == "linux") {
                 system("clear");
-            }else if (os == "windows"){
-            	std::system("cls");
-			};
+            } else if(os == "windows") {
+                std::system("cls");
+            };
             std::cout << "\nWelcome To The Ping Tool\n";
 
             std::string wait = "";
@@ -212,79 +181,63 @@ int main()
             std::cout << "How many bytes do you want to send 0-65,500? ";
             std::cin >> size;
 
-            string n = "";
-            string l = "";
-            if(os == "linux"){
-                n = "-c ";
-                l = "-s ";
+            string n = "-n";
+            string l = "-l";
+            if(os == "linux") {
+                n = "-c";
+                l = "-s";
                 system("clear");
-            }else if (os == "windows"){
-                n = "-n ";
-                l = "-l ";
-            	std::system("cls");
-			};
-            
-            std::string command = "ping " + ip + " " + n + how_many + " " + l + size;
+            } else if(os == "windows") {
+                n = "-n";
+                l = "-l";
+                std::system("cls");
+            };
+
+            std::string command = "ping " + ip + n + how_many + l + size;
 
             std::system(command.c_str());
 
             std::cout << "\nType exit to end or back to return to menu: ";
             std::cin >> wait;
             if(wait == "exit") {
-                std::cout << "	Bye!";
+                std::cout << "Bye!";
             } else if(wait == "back") {
-                if(os == "linux") {
-                    system("clear");
-                    continue;
-                };
-                system("cls");
+                os_clear(os);
                 continue;
             } else {
                 break;
             };
-		};
+        };
         // end Quick_Ping_Tool
-        
-        //start Nmap_autoscan_linux_only
-        if(tool == "5"){
-        	if(os == "linux"){
-    			system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/autoscan.py");
-				system("python3 autoscan.py");
-				std::string wait = "";
-				std::cout << "\nType exit to end or back to return to menu: ";
-        		std::cin >> wait;
-        		if(wait == "exit") {
-            		std::cout << "Bye!";
-            		break;
-        		}else if(wait == "back") {
-					system("clear");
-					continue;
-        		}else {
-            		break;
-        		};
-			}else if (os == "windows"){
-				std::cout << "Hey I told you is only for linux!!!!";
-				std::cout << "\nbye!!";
-				break;
-			}else{
-				break;
-			};
-		};
-		//end Nmap_autoscan_linux_only
-		if(tool == "6"){
-			std::cout << "\nComing Soon!!";
-			std::cout << "\nPlease Choose Something Else!!";
-			sleep(2);
-			continue;
-		}else{
-			if(tool == "exit"){
-				std::cout << "Bye!!";
-				break;
-			};
-			std::cout << "\nPlease Type Exit To Leave!!!";
-			sleep(2);
-			continue;
-		};
+
+        // start Nmap_autoscan_linux_only
+        if(tool == 5) {
+            if(os == "linux") {
+                system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/autoscan.py");
+                system("python3 autoscan.py");
+                std::string wait = "";
+                std::cout << "\nType exit to end or back to return to menu: ";
+                std::cin >> wait;
+                if(wait == "exit") {
+                    std::cout << "Bye!";
+                    break;
+                } else if(wait == "back") {
+                    system("clear");
+                    continue;
+                } else {
+                    break;
+                };
+            } else if(os == "windows") {
+                std::cout << "Hey I told you is only for linux!!!!";
+                std::cout << "\nbye!!";
+                break;
+            } else {
+                break;
+            };
+        } else {
+            break;
+        };
+        // end Nmap_autoscan_linux_only
     };
     return 0;
 };
@@ -307,22 +260,27 @@ void print_intro()
     std::cout << "\n2.Reverse_Shells_List";
     std::cout << "\n3.hash_Identifier_List";
     std::cout << "\n4.Quick_Ping_Tool";
-    std::cout << "\n5.Nmap_autoscan_linux_only";
-    std::cout << "\n6.Coming_Soon\n";
+    std::cout << "\n5.Nmap_autoscan_linux_only\n";
 };
-string input(string text)
-{
+string input(string text){
     std::cout << text;
     std::string os = "";
     std::cin >> os;
     return std::move(os);
 };
-void intro_clear(string os)
-{
+void intro_clear(string os){
     if(os == "windows") {
         system("cls");
         system("Color E");
     } else if(os == "linux") {
         system("clear");
     };
+}
+void os_clear(string os){
+    if(os == "linux") {
+        system("clear");
+
+    } else {
+        system("cls");
+    }
 }
