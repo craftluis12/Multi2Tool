@@ -63,9 +63,9 @@ int main()
                 		break;
 					};
 					std::cout << "\nUnknow Command!!";
-            		sleep(2);
-            		continue;
-				}
+    				sleep(2);
+    				continue;
+				};
             };
             if(privsec == "2") {
                 system("curl -s -L -O "
@@ -83,8 +83,8 @@ int main()
                     	break;
 					};
 					std::cout << "\nUnknow Command!!";
-            		sleep(2);
-            		continue;
+    				sleep(2);
+    				continue;
                 };
             };
             if(privsec == "3") {
@@ -103,10 +103,14 @@ int main()
             			break;
 					};
 					std::cout << "\nUnknow Command!!";
-            		sleep(2);
-            		continue;
+    				sleep(2);
+    				continue;
 				};
-            };
+            }else{
+            	std::cout << "\nUnknow Command!!";
+    			sleep(2);
+    			continue;
+			};
         };
         // end Prive sec
 
@@ -138,8 +142,8 @@ int main()
                     	break;
 					};
 					std::cout << "\nUnknow Command!!";
-            		sleep(2);
-            		continue;
+    				sleep(2);
+    				continue;
                 };
             }else{
             	if(reverse == "exit"){
@@ -147,8 +151,8 @@ int main()
                     break;
 				};
 				std::cout << "\nUnknow Command!!";
-            	sleep(2);
-            	continue;
+    			sleep(2);
+    			continue;
 			};
         };
         // end reverseshell
@@ -179,8 +183,8 @@ int main()
                 		break;
 					};
                     std::cout << "\nUnknow Command!!";
-            		sleep(2);
-            		continue;
+    				sleep(2);
+    				continue;
                 };
             }else{
             	if(hash == "exit"){
@@ -188,8 +192,8 @@ int main()
             		break;
 				};
             	std::cout << "\nUnknow Command!!";
-            	sleep(2);
-            	continue;
+    			sleep(2);
+    			continue;
 			};
         };
         // end Hash_Identifier
@@ -243,8 +247,8 @@ int main()
                 continue;
             } else {
                 std::cout << "\nUnknow Command!!";
-            	sleep(2);
-            	continue;
+    			sleep(2);
+    			continue;
             };
         };
         // end Quick_Ping_Tool
@@ -265,8 +269,8 @@ int main()
                     continue;
                 } else {
                     std::cout << "\nUnknow Command!!";
-            		sleep(2);
-            		continue;
+    				sleep(2);
+    				continue;
                 };
             } else if(os == "windows") {
                 std::cout << "Hey I told you is only for linux!!!!";
@@ -284,10 +288,10 @@ int main()
             if(tool == "exit") {
                 std::cout << "Bye!!";
                 break;
-            };
-            std::cout << "\nUnknow Command!!";
-            sleep(2);
-            continue;
+            };	
+			std::cout << "\nUnknow Command!!";
+    		sleep(2);
+    		continue;	
         };
     };
     return 0;
@@ -296,13 +300,14 @@ int main()
 void print_intro()
 {
     std::cout << R"(
-			###############################################
-			# __  __       _ _   _ ____ _____           _ #
-			#|  \/  |_   _| | |_(_)___ \_   _|__   ___ | |#
-			#| |\/| | | | | | __| | __) || |/ _ \ / _ \| |#
+            		#Made By: Craftluis12 & Raven                 #
+			###############################################   
+			# __  __       _ _   _ ____ _____           _ #          
+			#|  \/  |_   _| | |_(_)___ \_   _|__   ___ | |#                      
+			#| |\/| | | | | | __| | __) || |/ _ \ / _ \| |#                        
 			#| |  | | |_| | | |_| |/ __/ | | (_) | (_) | |#
-			#|_|  |_|\__,_|_|\__|_|_____||_|\___/ \___/|_|#
-			###############################################
+			#|_|  |_|\__,_|_|\__|_|_____||_|\___/ \___/|_|# 
+			############################################### v1.4.7
 		)";
     std::cout << "\nWelcome Hackers\n";
     std::cout << "\nChoose a tool: ";
@@ -337,5 +342,5 @@ void os_clear(string os)
 
     } else {
         system("cls");
-    }
+    };
 };
