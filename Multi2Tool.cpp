@@ -42,13 +42,13 @@ int main()
             std::cout << "1: LinPeas.sh";
             std::cout << "\n2: LinEnum.sh";
             std::cout << "\n3: lse.sh";
-
+			
             std::cout << "\nAnswer: ";
             std::cin >> privsec;
             if(privsec == "back") {
                 os_clear(os);
                 continue;
-            };
+			};
             if(privsec == "1") {
                 system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
                 std::string ex = "";
@@ -57,12 +57,16 @@ int main()
                 if(ex == "back") {
                     os_clear(os);
                     continue;
-                } else {
-                    break;
-                };
-            } else {
-                break;
-            }
+                }else{
+                	if(ex == "exit"){
+                		std::cout << "Bye!!";
+                		break;
+					};
+					std::cout << "\nUnknow Command!!";
+            		sleep(2);
+            		continue;
+				}
+            };
             if(privsec == "2") {
                 system("curl -s -L -O "
                        "https://raw.githubusercontent.com/rebootuser/LinEnum/"
@@ -74,10 +78,14 @@ int main()
                     os_clear(os);
                     continue;
                 } else {
-                    break;
+                    if(ex == "exit"){
+                    	std::cout << "Bye!!";
+                    	break;
+					};
+					std::cout << "\nUnknow Command!!";
+            		sleep(2);
+            		continue;
                 };
-            } else {
-                break;
             };
             if(privsec == "3") {
                 system("curl -s -L -O "
@@ -89,11 +97,15 @@ int main()
                 if(ex == "back") {
                     os_clear(os);
                     continue;
-                } else {
-                    break;
-                };
-            } else {
-                break;
+                }else{
+            		if(ex == "exit"){
+            			std::cout << "Bye!!";
+            			break;
+					};
+					std::cout << "\nUnknow Command!!";
+            		sleep(2);
+            		continue;
+				};
             };
         };
         // end Prive sec
@@ -121,11 +133,23 @@ int main()
                     os_clear(os);
                     continue;
                 } else {
-                    break;
+                    if(ex == "exit"){
+                    	std::cout << "Bye!!";
+                    	break;
+					};
+					std::cout << "\nUnknow Command!!";
+            		sleep(2);
+            		continue;
                 };
-            } else {
-                break;
-            };
+            }else{
+            	if(reverse == "exit"){
+                    std::cout << "Bye!!";
+                    break;
+				};
+				std::cout << "\nUnknow Command!!";
+            	sleep(2);
+            	continue;
+			};
         };
         // end reverseshell
 
@@ -150,11 +174,23 @@ int main()
                     os_clear(os);
                     continue;       
                 } else {
-                    break;
+                	if(ex == "exit"){
+                		std::cout << "Bye!!";
+                		break;
+					};
+                    std::cout << "\nUnknow Command!!";
+            		sleep(2);
+            		continue;
                 };
-            } else {
-                break;
-            };
+            }else{
+            	if(hash == "exit"){
+            		std::cout << "Bye!!";
+            		break;
+				};
+            	std::cout << "\nUnknow Command!!";
+            	sleep(2);
+            	continue;
+			};
         };
         // end Hash_Identifier
 
@@ -200,12 +236,15 @@ int main()
             std::cout << "\nType exit to end or back to return to menu: ";
             std::cin >> wait;
             if(wait == "exit") {
-                std::cout << "	Bye!";
+                std::cout << "Bye!";
+                break;
             } else if(wait == "back") {
                 os_clear(os);
                 continue;
             } else {
-                break;
+                std::cout << "\nUnknow Command!!";
+            	sleep(2);
+            	continue;
             };
         };
         // end Quick_Ping_Tool
@@ -225,13 +264,13 @@ int main()
                     system("clear");
                     continue;
                 } else {
-                    break;
+                    std::cout << "\nUnknow Command!!";
+            		sleep(2);
+            		continue;
                 };
             } else if(os == "windows") {
                 std::cout << "Hey I told you is only for linux!!!!";
                 std::cout << "\nbye!!";
-                break;
-            } else {
                 break;
             };
         };
@@ -246,7 +285,7 @@ int main()
                 std::cout << "Bye!!";
                 break;
             };
-            std::cout << "\nPlease Type Exit To Leave!!!";
+            std::cout << "\nUnknow Command!!";
             sleep(2);
             continue;
         };
@@ -290,7 +329,7 @@ void intro_clear(string os)
     } else if(os == "linux") {
         system("clear");
     };
-}
+};
 void os_clear(string os)
 {
     if(os == "linux") {
@@ -299,4 +338,4 @@ void os_clear(string os)
     } else {
         system("cls");
     }
-}
+};
