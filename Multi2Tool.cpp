@@ -181,8 +181,8 @@ int main()
             std::cout << "How many bytes do you want to send 0-65,500? ";
             std::cin >> size;
 
-            string n = "-n";
-            string l = "-l";
+            string n = "";
+            string l = "";
             if(os == "linux") {
                 n = "-c";
                 l = "-s";
