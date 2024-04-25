@@ -4,6 +4,8 @@
 #include <time.h>
 using std::string;
 
+void unknownC();
+void art_draw();
 void intro_clear(string os);
 void print_intro();
 void os_clear(string os);
@@ -25,113 +27,153 @@ int main()
             os = input("What operating system are you using?: ");
             continue;
         };
-
+		
         intro_clear(os);
+        art_draw();
         print_intro();
 
-        // to choose a tool from the list using number
+        // to choose a tool from the list
         std::string tool = "";
-        std::cout << "\nAnswer: ";
+        std::cout << "\nChoose: ";
         std::cin >> tool;
         // end of choosing tool
 
-        // Prive sec file dir
+        // Privesc file dir        
         if(tool == "1") {
-            string privsec = "";
-            std::cout << "\nPrivesec_List\n";
-            std::cout << "1: LinPeas.sh";
-            std::cout << "\n2: LinEnum.sh";
-            std::cout << "\n3: lse.sh";
-			
-            std::cout << "\nAnswer: ";
-            std::cin >> privsec;
-            if(privsec == "back") {
+        	intro_clear(os);
+        	art_draw();
+            std::string privesc = "";
+            std::cout << "\nPrivesc_List\n";
+			std::cout << "  1.Windows_scripts\n";
+			std::cout << "  2.Linux_scripts";
+            std::cout << "\nChoose: ";
+            std::cin >> privesc;
+            if(privesc == "back") {
                 os_clear(os);
                 continue;
 			};
-            if(privsec == "1") {
-                system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
-                std::string ex = "";
-                std::cout << "Type exit to end or back to go to menu: ";
-                std::cin >> ex;
-                if(ex == "back") {
-                    os_clear(os);
-                    continue;
-                }else{
-                	if(ex == "exit"){
-                		std::cout << "Bye!!";
-                		break;
+			 if(privesc == "1"){
+        		intro_clear(os);
+        		art_draw();
+				std::cout << "\nWindows_Privesc_Scripts\n";
+				std::cout << "  -Coming_Soon-";
+				
+				std::cout << "\nAnswer: ";
+            	std::cin >> privesc;
+            	if(privesc == "back"){
+            		os_clear(os);
+                	continue;
+				}else{
+					if(privesc == "exit"){
+						std::cout << "Bye!!";
+						break;
 					};
-					std::cout << "\nUnknow Command!!";
-    				sleep(2);
-    				continue;
+					unknownC();
+					continue;
 				};
-            };
-            if(privsec == "2") {
-                system("curl -s -L -O "
-                       "https://raw.githubusercontent.com/rebootuser/LinEnum/"
-                       "c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
-                std::string ex = "";
-                std::cout << "Type exit to end or back to go to menu: ";
-                std::cin >> ex;
-                if(ex == "back") {
-                    os_clear(os);
-                    continue;
-                } else {
-                    if(ex == "exit"){
-                    	std::cout << "Bye!!";
-                    	break;
+			};
+			if(privesc == "2"){
+				intro_clear(os);
+        		art_draw();
+				std::cout << "\nLinux_Privesc_Scripts\n";
+				std::cout << "  1:LinPeas.sh";
+				std::cout << "\n  2:LinEnum.sh";
+				std::cout << "\n  3:lse.sh";
+				
+				std::cout << "\nChoose: ";
+            	std::cin >> privesc;
+            	if(privesc == "back") {
+                	os_clear(os);
+                	continue;
+				};
+				
+				if(privesc == "1"){
+                	system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
+                	std::string ex = "";
+                	std::cout << "Type exit or back: ";
+                	std::cin >> ex;
+                	if(ex == "back") {
+                    	os_clear(os);
+                    	continue;
+                	}else{
+                		if(ex == "exit"){
+                			std::cout << "Bye!!";
+                			break;
+						};
+						unknownC();
+    					continue;
 					};
-					std::cout << "\nUnknow Command!!";
-    				sleep(2);
-    				continue;
-                };
-            };
-            if(privsec == "3") {
-                system("curl -s -L -O "
-                       "https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/"
-                       "eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
-                std::string ex = "";
-                std::cout << "Type exit to end or back to go to menu: ";
-                std::cin >> ex;
-                if(ex == "back") {
-                    os_clear(os);
-                    continue;
-                }else{
-            		if(ex == "exit"){
+            	};
+            	if(privesc == "2"){
+                	system("curl -s -L -O https://raw.githubusercontent.com/rebootuser/LinEnum/c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
+                	std::string ex = "";
+                	std::cout << "Type exit or back: ";
+                	std::cin >> ex;
+                	if(ex == "back") {
+                    	os_clear(os);
+                    	continue;
+                	} else {
+                    	if(ex == "exit"){
+                    		std::cout << "Bye!!";
+                    		break;
+						};
+						unknownC();
+    					continue;
+                	};
+            	};
+            	if(privesc == "3") {
+                	system("curl -s -L -O https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
+                	std::string ex = "";
+                	std::cout << "Type exit or back: ";
+                	std::cin >> ex;
+                	if(ex == "back") {
+                    	os_clear(os);
+                    	continue;
+                	}else{
+            			if(ex == "exit"){
+            				std::cout << "Bye!!";
+            				break;
+						};
+						unknownC();
+    					continue;
+					};
+            	}else{
+            		if(privesc == "exit"){
             			std::cout << "Bye!!";
             			break;
 					};
-					std::cout << "\nUnknow Command!!";
-    				sleep(2);
+            		unknownC();
     				continue;
+				};	
+			}else{
+				if(privesc == "exit"){
+					std::cout << "Bye!!";
+            		break;
 				};
-            }else{
-            	std::cout << "\nUnknow Command!!";
-    			sleep(2);
+				unknownC();
     			continue;
 			};
         };
-        // end Prive sec
+        // end Privesc
 
         // Reverseshells file dir
         if(tool == "2") {
+        	intro_clear(os);
+        	art_draw();
             string reverse = "";
             std::cout << "\nReverse_Shells_List\n";
             std::cout << "1: PHP_Reverse_Shell";
 
-            std::cout << "\nAnswer: ";
+            std::cout << "\nChoose: ";
             std::cin >> reverse;
             if(reverse == "back") {
                 os_clear(os);
                 continue;
             };
             if(reverse == "1") {
-                system("curl -s -L -O "
-                       "https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/"
-                       "8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
+                system("curl -s -L -O https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
                 std::string ex = "";
-                std::cout << "Type exit to end or back to go to menu: ";
+                std::cout << "Type exit or back: ";
                 std::cin >> ex;
                 if(ex == "back") {
                     os_clear(os);
@@ -141,8 +183,7 @@ int main()
                     	std::cout << "Bye!!";
                     	break;
 					};
-					std::cout << "\nUnknow Command!!";
-    				sleep(2);
+					unknownC();
     				continue;
                 };
             }else{
@@ -150,8 +191,7 @@ int main()
                     std::cout << "Bye!!";
                     break;
 				};
-				std::cout << "\nUnknow Command!!";
-    			sleep(2);
+				unknownC();
     			continue;
 			};
         };
@@ -159,11 +199,13 @@ int main()
 
         // Hash_Identifier file dir
         if(tool == "3") {
+        	intro_clear(os);
+        	art_draw();
             string hash = "";
             std::cout << "\nHash_Identifier_List\n";
             std::cout << "1: Hash_ID.py";
 
-            std::cout << "\nAnswer: ";
+            std::cout << "\nChoose: ";
             std::cin >> hash;
             if(hash == "back") {
                 os_clear(os);
@@ -172,7 +214,7 @@ int main()
             if(hash == "1") {
                 system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
                 std::string ex = "";
-                std::cout << "Type exit to end or back to go to menu: ";
+                std::cout << "Type exit or back: ";
                 std::cin >> ex;
                 if(ex == "back") {
                     os_clear(os);
@@ -182,8 +224,7 @@ int main()
                 		std::cout << "Bye!!";
                 		break;
 					};
-                    std::cout << "\nUnknow Command!!";
-    				sleep(2);
+                    unknownC();
     				continue;
                 };
             }else{
@@ -191,8 +232,7 @@ int main()
             		std::cout << "Bye!!";
             		break;
 				};
-            	std::cout << "\nUnknow Command!!";
-    			sleep(2);
+            	unknownC();
     			continue;
 			};
         };
@@ -237,7 +277,7 @@ int main()
 
             std::system(command.c_str());
 
-            std::cout << "\nType exit to end or back to return to menu: ";
+            std::cout << "\nType exit or back: ";
             std::cin >> wait;
             if(wait == "exit") {
                 std::cout << "Bye!";
@@ -246,8 +286,7 @@ int main()
                 os_clear(os);
                 continue;
             } else {
-                std::cout << "\nUnknow Command!!";
-    			sleep(2);
+                unknownC();
     			continue;
             };
         };
@@ -259,7 +298,7 @@ int main()
                 system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/autoscan.py");
                 system("python3 autoscan.py");
                 std::string wait = "";
-                std::cout << "\nType exit to end or back to return to menu: ";
+                std::cout << "\nType exit or back: ";
                 std::cin >> wait;
                 if(wait == "exit") {
                     std::cout << "Bye!";
@@ -268,14 +307,13 @@ int main()
                     system("clear");
                     continue;
                 } else {
-                    std::cout << "\nUnknow Command!!";
-    				sleep(2);
+                    unknownC();
     				continue;
                 };
             } else if(os == "windows") {
-                std::cout << "Hey I told you is only for linux!!!!";
-                std::cout << "\nbye!!";
-                break;
+                std::cout << "Linux Only!!";
+                sleep(2);
+                continue;
             };
         };
         // end Nmap_autoscan_linux_only
@@ -289,17 +327,16 @@ int main()
                 std::cout << "Bye!!";
                 break;
             };	
-			std::cout << "\nUnknow Command!!";
-    		sleep(2);
+			unknownC();
     		continue;	
         };
     };
     return 0;
 };
 
-void print_intro()
-{
-    std::cout << R"(
+
+void art_draw(){
+	std::cout << R"(
             		#Made By: Craftluis12 & Raven                 #
 			###############################################   
 			# __  __       _ _   _ ____ _____           _ #          
@@ -307,18 +344,25 @@ void print_intro()
 			#| |\/| | | | | | __| | __) || |/ _ \ / _ \| |#                        
 			#| |  | | |_| | | |_| |/ __/ | | (_) | (_) | |#
 			#|_|  |_|\__,_|_|\__|_|_____||_|\___/ \___/|_|# 
-			############################################### v1.4.7
+			############################################### v1.5.0
 		)";
-    std::cout << "\nWelcome Hackers\n";
+};
+
+void print_intro()
+{
+    std::cout << "\nWelcome Hackers";
     std::cout << "\nChoose a tool: ";
     // List of Tools
-    std::cout << "\n1.Privesec_List";
-    std::cout << "\n2.Reverse_Shells_List";
-    std::cout << "\n3.hash_Identifier_List";
-    std::cout << "\n4.Quick_Ping_Tool";
-    std::cout << "\n5.Nmap_autoscan_linux_only";
-    std::cout << "\n6.Coming_Soon\n";
+    std::cout << "\n--------------------------          ---------------------------           ---------------------------";
+    std::cout << "\n  1.Privesc_List[B]                   2.Reverse_Shells_List[B]             3.hash_Identifier_List[B]";
+    std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
+    
+    std::cout << "\n--------------------------          ---------------------------           ---------------------------";
+    std::cout << "\n  4.Quick_Ping_Tool[B]                  5.Nmap_autoscan[L]                     6.Coming_Soon";
+    std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
+    std::cout << "B = Both and L = Linux\n";
 };
+
 string input(string text)
 {
     std::cout << text;
@@ -343,4 +387,9 @@ void os_clear(string os)
     } else {
         system("cls");
     };
+};
+
+void unknownC(){
+	std::cout << "\nUnknow Command!!";
+    sleep(2);
 };
