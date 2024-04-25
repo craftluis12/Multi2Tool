@@ -1,7 +1,8 @@
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
-#include <time.h>
+#include <chrono>
+#include <thread>
 using std::string;
 
 void unknownC();
@@ -9,6 +10,8 @@ void art_draw();
 void intro_clear(string os);
 void print_intro();
 void os_clear(string os);
+void thread_sleep();
+void lower_case(string word);
 string input(string text);
 
 int main()
@@ -17,7 +20,7 @@ int main()
 
     for(auto& x : os) { // This code Lowers any upper case letters
         x = tolower(x);
-    };
+    }; 
 
     intro_clear(os);
     bool should_run = true;
@@ -65,7 +68,7 @@ int main()
                 	continue;
 				}else{
 					if(privesc == "exit"){
-						std::cout << "Bye!!";
+						std::cout << "\n	Bye!!\n";
 						break;
 					};
 					unknownC();
@@ -97,7 +100,7 @@ int main()
                     	continue;
                 	}else{
                 		if(ex == "exit"){
-                			std::cout << "Bye!!";
+                			std::cout << "\n	Bye!!\n";
                 			break;
 						};
 						unknownC();
@@ -114,7 +117,7 @@ int main()
                     	continue;
                 	} else {
                     	if(ex == "exit"){
-                    		std::cout << "Bye!!";
+                    		std::cout << "\n	Bye!!\n";
                     		break;
 						};
 						unknownC();
@@ -131,7 +134,7 @@ int main()
                     	continue;
                 	}else{
             			if(ex == "exit"){
-            				std::cout << "Bye!!";
+            				std::cout << "\n	Bye!!\n";
             				break;
 						};
 						unknownC();
@@ -139,7 +142,7 @@ int main()
 					};
             	}else{
             		if(privesc == "exit"){
-            			std::cout << "Bye!!";
+            			std::cout << "\n	Bye!!\n";
             			break;
 					};
             		unknownC();
@@ -147,7 +150,7 @@ int main()
 				};	
 			}else{
 				if(privesc == "exit"){
-					std::cout << "Bye!!";
+					std::cout << "\n	Bye!!\n";
             		break;
 				};
 				unknownC();
@@ -180,7 +183,7 @@ int main()
                     continue;
                 } else {
                     if(ex == "exit"){
-                    	std::cout << "Bye!!";
+                    	std::cout << "\n	Bye!!\n";
                     	break;
 					};
 					unknownC();
@@ -188,7 +191,7 @@ int main()
                 };
             }else{
             	if(reverse == "exit"){
-                    std::cout << "Bye!!";
+                    std::cout << "\n	Bye!!\n";
                     break;
 				};
 				unknownC();
@@ -197,54 +200,51 @@ int main()
         };
         // end reverseshell
 
-        // Hash_Identifier file dir
+        // Hash_Identifier_Tool
         if(tool == "3") {
-        	intro_clear(os);
-        	art_draw();
-            string hash = "";
-            std::cout << "\nHash_Identifier_List\n";
-            std::cout << "1: Hash_ID.py";
-
-            std::cout << "\nChoose: ";
-            std::cin >> hash;
-            if(hash == "back") {
-                os_clear(os);
-                continue;
-            };
-            if(hash == "1") {
-                system("curl -s -L -O https://raw.githubusercontent.com/blackploit/hash-identifier/master/hash-id.py");
-                std::string ex = "";
-                std::cout << "Type exit or back: ";
+        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/hash-id.py");
+            os_clear(os);
+            system("python3 hash-id.py");
+            if(os == "windows"){
+            	system("del hash-id.py");
+            	std::string ex = "";
+                std::cout << "\nType exit or back: ";
                 std::cin >> ex;
-                if(ex == "back") {
-                    os_clear(os);
-                    continue;       
-                } else {
-                	if(ex == "exit"){
-                		std::cout << "Bye!!";
-                		break;
+                if(ex == "back"){
+                	continue;
+				}else{
+					if(ex == "exit"){
+						std::cout << "\n	Bye!!\n";
+						break;
 					};
-                    unknownC();
-    				continue;
-                };
-            }else{
-            	if(hash == "exit"){
-            		std::cout << "Bye!!";
-            		break;
+					unknownC();
+					continue;
 				};
-            	unknownC();
-    			continue;
+                
+			}else{
+				if(os == "linux"){
+					system("rm hash-id.py");
+					std::string ex = "";
+                	std::cout << "\nType exit or back: ";
+                	std::cin >> ex;
+                	if(ex == "back"){
+                		continue;
+					}else{
+						if(ex == "exit"){
+							std::cout << "\n	Bye!!\n";
+							break;
+						};
+						unknownC();
+						continue;
+					};
+				};
 			};
-        };
+		};
         // end Hash_Identifier
 
         // Quick_Ping_Tool
         if(tool == "4") {
-            if(os == "linux") {
-                system("clear");
-            } else if(os == "windows") {
-                std::system("cls");
-            };
+            os_clear(os);
             std::cout << "\nWelcome To The Ping Tool\n";
 
             std::string wait = "";
@@ -280,7 +280,7 @@ int main()
             std::cout << "\nType exit or back: ";
             std::cin >> wait;
             if(wait == "exit") {
-                std::cout << "Bye!";
+                std::cout << "\n	Bye!!\n";
                 break;
             } else if(wait == "back") {
                 os_clear(os);
@@ -297,11 +297,12 @@ int main()
             if(os == "linux") {
                 system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/autoscan.py");
                 system("python3 autoscan.py");
+                system("rm autoscan.py");
                 std::string wait = "";
                 std::cout << "\nType exit or back: ";
                 std::cin >> wait;
                 if(wait == "exit") {
-                    std::cout << "Bye!";
+                    std::cout << "\n	Bye!!\n";
                     break;
                 } else if(wait == "back") {
                     system("clear");
@@ -312,7 +313,7 @@ int main()
                 };
             } else if(os == "windows") {
                 std::cout << "Linux Only!!";
-                sleep(2);
+                thread_sleep();
                 continue;
             };
         };
@@ -320,11 +321,11 @@ int main()
         if(tool == "6") {
             std::cout << "\nComing Soon!!";
             std::cout << "\nPlease Choose Something Else!!";
-            sleep(2);
+            thread_sleep();
             continue;
         } else {
             if(tool == "exit") {
-                std::cout << "Bye!!";
+                std::cout << "\n	Bye!!\n";
                 break;
             };	
 			unknownC();
@@ -344,7 +345,7 @@ void art_draw(){
 			#| |\/| | | | | | __| | __) || |/ _ \ / _ \| |#                        
 			#| |  | | |_| | | |_| |/ __/ | | (_) | (_) | |#
 			#|_|  |_|\__,_|_|\__|_|_____||_|\___/ \___/|_|# 
-			############################################### v1.5.0
+			############################################### v1.5.5
 		)";
 };
 
@@ -354,13 +355,13 @@ void print_intro()
     std::cout << "\nChoose a tool: ";
     // List of Tools
     std::cout << "\n--------------------------          ---------------------------           ---------------------------";
-    std::cout << "\n  1.Privesc_List[B]                   2.Reverse_Shells_List[B]             3.hash_Identifier_List[B]";
+    std::cout << "\n  1.Privesc_List[B]                   2.Reverse_Shells_List[B]             3.hash_Identifier_Tool[B]";
     std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
     
     std::cout << "\n--------------------------          ---------------------------           ---------------------------";
-    std::cout << "\n  4.Quick_Ping_Tool[B]                  5.Nmap_autoscan[L]                     6.Coming_Soon";
+    std::cout << "\n  4.Quick_Ping_Tool[B]                5.Nmap_autoscan_Tool[L]                     6.Coming_Soon";
     std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
-    std::cout << "B = Both and L = Linux\n";
+    std::cout << "        B = Both                             L = Linux                              W = Windows\n";
 };
 
 string input(string text)
@@ -391,5 +392,9 @@ void os_clear(string os)
 
 void unknownC(){
 	std::cout << "\nUnknow Command!!";
-    sleep(2);
+    thread_sleep();
+};
+
+void thread_sleep() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 };
