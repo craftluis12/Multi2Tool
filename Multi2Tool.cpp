@@ -11,16 +11,16 @@ void intro_clear(string os);
 void print_intro();
 void os_clear(string os);
 void thread_sleep();
-void lower_case(string word);
+string lower_case(string word);
 string input(string text);
 
 int main()
 {
     string os = input("What operating system are you using?: ");
-
-    for(auto& x : os) { // This code Lowers any upper case letters
-        x = tolower(x);
-    }; 
+	os = lower_case(os);
+    //for(auto& x : os) { // This code Lowers any upper case letters
+    //    x = tolower(x);
+    //}; 
 
     intro_clear(os);
     bool should_run = true;
@@ -51,28 +51,48 @@ int main()
 			std::cout << "  2.Linux_scripts";
             std::cout << "\nChoose: ";
             std::cin >> privesc;
+            privesc = lower_case(privesc);
             if(privesc == "back") {
                 os_clear(os);
                 continue;
 			};
-			 if(privesc == "1"){
+			if(privesc == "1"){
         		intro_clear(os);
         		art_draw();
 				std::cout << "\nWindows_Privesc_Scripts\n";
-				std::cout << "  -Coming_Soon-";
+				std::cout << "  1.WinPeas.exe\n";
 				
 				std::cout << "\nAnswer: ";
             	std::cin >> privesc;
+            	privesc = lower_case(privesc);
             	if(privesc == "back"){
             		os_clear(os);
                 	continue;
+                };
+                if(privesc == "1"){
+                	system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/download/20240421-825f642d/winPEASx64.exe");
+                	std::string ex = "";
+                	std::cout << "Type exit or back: ";
+                	std::cin >> ex;
+                	ex = lower_case(ex);
+                	if(ex == "back") {
+                    	os_clear(os);
+                    	continue;
+                	}else{
+                		if(ex == "exit"){
+                			std::cout << "\n	Bye!!\n";
+                			break;
+						};
+						unknownC();
+    					continue;
+					};
 				}else{
 					if(privesc == "exit"){
 						std::cout << "\n	Bye!!\n";
-						break;
+                		break;
 					};
 					unknownC();
-					continue;
+					continue;         		
 				};
 			};
 			if(privesc == "2"){
@@ -85,6 +105,7 @@ int main()
 				
 				std::cout << "\nChoose: ";
             	std::cin >> privesc;
+            	privesc = lower_case(privesc);
             	if(privesc == "back") {
                 	os_clear(os);
                 	continue;
@@ -95,6 +116,7 @@ int main()
                 	std::string ex = "";
                 	std::cout << "Type exit or back: ";
                 	std::cin >> ex;
+                	ex = lower_case(ex);
                 	if(ex == "back") {
                     	os_clear(os);
                     	continue;
@@ -112,6 +134,7 @@ int main()
                 	std::string ex = "";
                 	std::cout << "Type exit or back: ";
                 	std::cin >> ex;
+                	ex = lower_case(ex);
                 	if(ex == "back") {
                     	os_clear(os);
                     	continue;
@@ -129,6 +152,7 @@ int main()
                 	std::string ex = "";
                 	std::cout << "Type exit or back: ";
                 	std::cin >> ex;
+                	ex = lower_case(ex);
                 	if(ex == "back") {
                     	os_clear(os);
                     	continue;
@@ -169,6 +193,7 @@ int main()
 
             std::cout << "\nChoose: ";
             std::cin >> reverse;
+            reverse = lower_case(reverse);
             if(reverse == "back") {
                 os_clear(os);
                 continue;
@@ -178,6 +203,7 @@ int main()
                 std::string ex = "";
                 std::cout << "Type exit or back: ";
                 std::cin >> ex;
+                ex = lower_case(ex);
                 if(ex == "back") {
                     os_clear(os);
                     continue;
@@ -210,6 +236,7 @@ int main()
             	std::string ex = "";
                 std::cout << "\nType exit or back: ";
                 std::cin >> ex;
+                ex = lower_case(ex);
                 if(ex == "back"){
                 	continue;
 				}else{
@@ -227,6 +254,7 @@ int main()
 					std::string ex = "";
                 	std::cout << "\nType exit or back: ";
                 	std::cin >> ex;
+                	ex = lower_case(ex);
                 	if(ex == "back"){
                 		continue;
 					}else{
@@ -279,6 +307,7 @@ int main()
 
             std::cout << "\nType exit or back: ";
             std::cin >> wait;
+            wait = lower_case(wait);
             if(wait == "exit") {
                 std::cout << "\n	Bye!!\n";
                 break;
@@ -301,6 +330,7 @@ int main()
                 std::string wait = "";
                 std::cout << "\nType exit or back: ";
                 std::cin >> wait;
+                wait = lower_case(wait);
                 if(wait == "exit") {
                     std::cout << "\n	Bye!!\n";
                     break;
@@ -345,7 +375,7 @@ void art_draw(){
 			#| |\/| | | | | | __| | __) || |/ _ \ / _ \| |#                        
 			#| |  | | |_| | | |_| |/ __/ | | (_) | (_) | |#
 			#|_|  |_|\__,_|_|\__|_|_____||_|\___/ \___/|_|# 
-			############################################### v1.5.5
+			############################################### v1.5.7
 		)";
 };
 
@@ -397,4 +427,13 @@ void unknownC(){
 
 void thread_sleep() {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+};
+
+string lower_case(string word)
+{
+    string c = "";
+    for(int i = 0; i < word.length(); i++) {
+        c += tolower(word[i]);
+    };
+    return std::move(c);
 };
