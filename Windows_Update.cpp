@@ -23,7 +23,7 @@ int main()
 		}else if(line != version){
 			std::cout << "Updating..";
 			system("del Multi2Tool.cpp");
-        	system("curl -s -L -O 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@https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/Multi2Tool.cpp");
+        	system("curl -s -L -O https://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@raw.githubusercontent.com/craftluis12/Multi2Tool/main/Multi2Tool.cpp");
         	std::cout << "\nDone\n";
         	std::cout << "\n  Bye!!";
 		};
@@ -43,7 +43,7 @@ int main()
     batchFile.close();
 	};
 	
-    system("bach_del.bat 2>nul"); 
-    
+	system("bach_del.bat");
+    	
     return 0; 
 };
