@@ -40,6 +40,13 @@ int main()
         std::cout << "\nChoose: ";
         std::cin >> tool;
         // end of choosing tool
+		tool = lower_case(tool);
+		if(tool == "update"){
+			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Windows_Update.exe");
+			system("cls");
+			system("Windows_Update.exe");
+			break;	
+		};
 
         // Privesc file dir        
         if(tool == "1") {
@@ -228,7 +235,7 @@ int main()
 
         // Hash_Identifier_Tool
         if(tool == "3") {
-        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/hash-id.py");
+        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/hash-id.py");
             os_clear(os);
             system("python3 hash-id.py");
             if(os == "windows"){
@@ -324,7 +331,7 @@ int main()
         // start Nmap_autoscan_linux_only
         if(tool == "5") {
             if(os == "linux") {
-                system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/pulls/main/autoscan.py");
+                system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/autoscan.py");
                 system("python3 autoscan.py");
                 system("rm autoscan.py");
                 std::string wait = "";
@@ -365,6 +372,7 @@ int main()
     return 0;
 };
 
+std::string version = "v1.6.1";
 
 void art_draw(){
 	std::cout << R"(
@@ -375,8 +383,7 @@ void art_draw(){
 			#| |\/| | | | | | __| | __) || |/ _ \ / _ \| |#                        
 			#| |  | | |_| | | |_| |/ __/ | | (_) | (_) | |#
 			#|_|  |_|\__,_|_|\__|_|_____||_|\___/ \___/|_|# 
-			############################################### v1.5.7
-		)";
+			############################################### )" << version;
 };
 
 void print_intro()
