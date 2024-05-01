@@ -5,7 +5,7 @@
 int main() 
 {
 	//grabs the version file
-	system("curl -s -L -O https://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@raw.githubusercontent.com/craftluis12/Multi2Tool/main/version.txt");
+	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/version.txt");
 	
 	std::ifstream versionfile("version.txt");
 	std::string line;
@@ -22,7 +22,7 @@ int main()
 		}else if(line != version){
 			std::cout << "Updating..";
 			system("del Multi2Tool.cpp");
-        	system("curl -s -L -O https://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@raw.githubusercontent.com/craftluis12/Multi2Tool/main/Multi2Tool.cpp");
+        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/Multi2Tool.cpp");
         	std::cout << "\nDone\n";
         	std::cout << "\n  Bye!!";
 		};
