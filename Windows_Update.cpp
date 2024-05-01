@@ -42,7 +42,7 @@ int main()
     batchFile.close();
 	};
 	
-	system("bach_del.bat 2>nul");
+	system("bach_del.bat > nul 2>&1");
     	
     return 0; 
 };
