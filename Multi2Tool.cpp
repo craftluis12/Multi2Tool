@@ -49,7 +49,7 @@ int main()
 		}else if(tool == "update" && os == "linux"){
 			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_Update");
 			system("clear");
-			system("./Linux_Update.sh");
+			system("./Linux_Update");
 			break;
 		};
 
