@@ -41,11 +41,16 @@ int main()
         std::cin >> tool;
         // end of choosing tool
 		tool = lower_case(tool);
-		if(tool == "update"){
+		if(tool == "update" && os == "windows"){
 			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Windows_Update.exe");
 			system("cls");
 			system("Windows_Update.exe");
 			break;	
+		}else if(tool == "update" && os == "linux"){
+			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_Update");
+			system("clear");
+			system("./Linux_Update.sh");
+			break;
 		};
 
         // Privesc file dir        
@@ -372,7 +377,7 @@ int main()
     return 0;
 };
 
-std::string version = "v1.6.1";
+std::string version = "v1.6.3";
 
 void art_draw(){
 	std::cout << R"(
