@@ -24,7 +24,7 @@ int main()
 
     intro_clear(os);
     bool should_run = true;
-    while(should_run) {
+    while(should_run) { 
         if(os != "windows" && os != "linux") {
             std::cout << "Error Unknow OS System!!\n";
             os = input("What operating system are you using?: ");
@@ -40,6 +40,8 @@ int main()
         std::cout << "\nChoose: ";
         std::cin >> tool;
         // end of choosing tool
+        
+        //start of updating system
 		tool = lower_case(tool);
 		if(tool == "update" && os == "windows"){
 			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Windows_Update.exe");
@@ -47,12 +49,13 @@ int main()
 			system("Windows_Update.exe");
 			break;	
 		}else if(tool == "update" && os == "linux"){
-			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_Update");
+			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_update");
 			system("clear");
 			system("chmod +x Linux_Update");
 			system("./Linux_Update");
 			break;
 		};
+		//end updating system
 
         // Privesc file dir        
         if(tool == "1") {
@@ -361,6 +364,7 @@ int main()
             };
         };
         // end Nmap_autoscan_linux_only
+        
         if(tool == "6") {
             std::cout << "\nComing Soon!!";
             std::cout << "\nPlease Choose Something Else!!";
@@ -380,7 +384,7 @@ int main()
 
 std::string version = "v1.6.3";
 
-void art_draw(){
+void art_draw(){ //function that shows the art and the creators
 	std::cout << R"(
             		#Made By: Craftluis12 & Raven                 #
 			###############################################   
@@ -392,7 +396,7 @@ void art_draw(){
 			############################################### )" << version;
 };
 
-void print_intro()
+void print_intro() //function that shows the menu
 {
     std::cout << "\nWelcome Hackers";
     std::cout << "\nChoose a tool: ";
@@ -407,14 +411,15 @@ void print_intro()
     std::cout << "        B = Both                             L = Linux                              W = Windows\n";
 };
 
-string input(string text)
+string input(string text) //function that ask for what operating system your running 
 {
     std::cout << text;
     std::string os = "";
     std::cin >> os;
     return std::move(os);
 };
-void intro_clear(string os)
+
+void intro_clear(string os) //function runs clear or cls in the right enviroment and adds color to windows only
 {
     if(os == "windows") {
         system("cls");
@@ -423,7 +428,8 @@ void intro_clear(string os)
         system("clear");
     };
 };
-void os_clear(string os)
+
+void os_clear(string os) //function runs clear or cls in the right enviroment
 {
     if(os == "linux") {
         system("clear");
@@ -433,16 +439,16 @@ void os_clear(string os)
     };
 };
 
-void unknownC(){
+void unknownC(){ //function prints unknown then sleeps
 	std::cout << "\nUnknow Command!!";
     thread_sleep();
 };
 
-void thread_sleep() {
+void thread_sleep() { //function to sleep the program
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 };
 
-string lower_case(string word)
+string lower_case(string word) //function grabs input then lowers every letter to lowercase
 {
     string c = "";
     for(int i = 0; i < word.length(); i++) {
