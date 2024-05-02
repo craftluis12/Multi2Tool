@@ -49,7 +49,7 @@ int main()
 			system("Windows_Update.exe");
 			break;	
 		}else if(tool == "update" && os == "linux"){
-			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_update");
+			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_Update");
 			system("clear");
 			system("chmod +x Linux_Update");
 			system("./Linux_Update");
