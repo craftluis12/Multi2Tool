@@ -24,7 +24,7 @@ Multi2Tool is intended for educational and authorized testing purposes only. Mis
 The hash identifier script is credited to Zion3R.
 
 ## License
-[Specify license information here, if applicable]
+LICENSE
 
 ## Support
 For questions, bug reports, or feature requests, please open an issue (https://github.com/craftluis12/Multi2Tool/issues) or contact craftluis12 or raven.
