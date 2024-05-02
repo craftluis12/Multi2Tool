@@ -28,4 +28,4 @@ Contributors: craftluis12, raven.
 [Specify license information here, if applicable]
 
 ## Support
-For questions, bug reports, or feature requests, please [open an issue](link to issue tracker) or contact [maintainer name or team].
+For questions, bug reports, or feature requests, please open an issue (https://github.com/craftluis12/Multi2Tool/issues) or contact craftluis12 or raven.
