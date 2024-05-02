@@ -44,12 +44,12 @@ int main()
         //start of updating system
 		tool = lower_case(tool);
 		if(tool == "update" && os == "windows"){
-			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Windows_Update.exe");
+			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/windows_update_files/Windows_Update.exe");
 			system("cls");
 			system("Windows_Update.exe");
 			break;	
 		}else if(tool == "update" && os == "linux"){
-			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/Linux_Update");
+			system("curl -s -L -O https://github.com/craftluis12/Multi2Tool/raw/main/linux_update_files/Linux_Update");
 			system("clear");
 			system("chmod +x Linux_Update");
 			system("./Linux_Update");
@@ -244,7 +244,7 @@ int main()
 
         // Hash_Identifier_Tool
         if(tool == "3") {
-        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/hash-id.py");
+        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/hash-id.py");
             os_clear(os);
             system("python3 hash-id.py");
             if(os == "windows"){
@@ -340,7 +340,7 @@ int main()
         // start Nmap_autoscan_linux_only
         if(tool == "5") {
             if(os == "linux") {
-                system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/autoscan.py");
+                system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/autoscan.py");
                 system("python3 autoscan.py");
                 system("rm autoscan.py");
                 std::string wait = "";
