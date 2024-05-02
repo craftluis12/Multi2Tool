@@ -35,7 +35,7 @@ int main()
 					break;
 				}else{
 					std::cout << "Updating..";
-					system("rm Multi2Tool.cpp");
+					system("del Multi2Tool.cpp");
         			system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/Multi2Tool.cpp");
         			std::cout << "\nDone\n";
         			std::cout << "\n  Bye!!";
