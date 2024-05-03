@@ -508,12 +508,12 @@ void os_clear(string os) //function runs clear or cls in the right enviroment
 };
 
 void unknownC(){ //function prints unknown then sleeps
-	std::cout << "\nUnknow Command!!";
+	std::cout << "\nUnknow Command!!\n";
     thread_sleep();
 };
 
 void thread_sleep() { //function to sleep the program
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1100));
 };
 
 string lower_case(string word) //function grabs input then lowers every letter to lowercase
