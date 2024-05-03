@@ -57,7 +57,7 @@ int main()
 		};
 		//end updating system
 
-        // Privesc file dir        
+        //start of Privesc_List       
         if(tool == "1") {
         	intro_clear(os);
         	art_draw();
@@ -197,9 +197,9 @@ int main()
     			continue;
 			};
         };
-        // end Privesc
+        //end Privesc_List
 
-        // Reverseshells file dir
+        //start of Reverse_Shells_List
         if(tool == "2") {
         	intro_clear(os);
         	art_draw();
@@ -240,149 +240,217 @@ int main()
     			continue;
 			};
         };
-        // end reverseshell
-
-        // Hash_Identifier_Tool
-        if(tool == "3") {
-        	system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/hash-id.py");
-            os_clear(os);
-            system("python3 hash-id.py");
-            if(os == "windows"){
-            	system("del hash-id.py");
-            	std::string ex = "";
-                std::cout << "\nType exit or back: ";
-                std::cin >> ex;
-                ex = lower_case(ex);
-                if(ex == "back"){
+        //end Reverse_Shells_List
+		
+		//start of Scripting_Tools
+		if(tool == "3"){
+			intro_clear(os);
+        	art_draw();
+        	std::string scripts = "";
+			std::cout << "\nScripting_Tools";
+			std::cout << "\n  1.Network_Tools";
+			std::cout << "\n  2.Hashing_Tools";
+				
+			std::cout << "\nChoose: ";
+            std::cin >> scripts;
+            scripts = lower_case(scripts);
+            if(scripts == "back"){
+                os_clear(os);
+                continue;
+			};
+			
+			//start of Network_Tools
+			if(scripts == "1"){
+				intro_clear(os);
+        		art_draw();
+        		std::string network = "";
+				std::cout << "\nNetwork_Tools";
+				std::cout << "\n  1.Nmap_autoscan[L]";
+				std::cout << "\n  2.Quick_Ping[B]\n";
+				
+				std::cout << "\nChoose: ";
+				std::cin >> network;
+				network = lower_case(network);
+				if(network == "back"){
+                	os_clear(os);
                 	continue;
+				};
+				
+				// start Nmap_autoscan_linux_only
+        		if(network == "1") {
+            		if(os == "linux") {
+                		system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/autoscan.py");
+                		system("python3 autoscan.py");
+                		system("rm autoscan.py");
+                		std::string wait = "";
+                		std::cout << "\nType exit or back: ";
+                		std::cin >> wait;
+                		wait = lower_case(wait);
+                		if(wait == "exit") {
+                		    std::cout << "\n	Bye!!\n";
+                		    break;
+                		} else if(wait == "back") {
+                    		system("clear");
+                   		 continue;
+                		} else {
+                    		unknownC();
+    						continue;
+                		};
+            		} else if(os == "windows") {
+                		std::cout << "Linux Only!!";
+                		thread_sleep();
+                		continue;
+            		};
+        		}else{
+        			if(network == "exit"){
+        				std::cout << "\n	Bye!!\n";
+                		break;
+					};
+				};
+        		// end Nmap_autoscan_linux_only
+        		
+        		// Quick_Ping_Tool
+        		if(network == "2") {
+            		os_clear(os);
+            		std::cout << "\nWelcome To The Ping Tool\n";
+
+            		std::string wait = "";
+            		std::string how_many = "";
+            		std::string size = "";
+            		std::string ip = "";
+
+            		std::cout << "What is the ip you want to ping? ";
+            		std::cin >> ip;
+
+            		std::cout << "How many packets do you want to send? ";
+            		std::cin >> how_many;
+
+            		std::cout << "How many bytes do you want to send 0-65,500? ";
+            		std::cin >> size;
+
+            		string n = "";
+            		string l = "";
+            		if(os == "linux") {
+               			n = "-c ";
+                		l = "-s ";
+                		system("clear");
+            		} else if(os == "windows") {
+                		n = "-n ";
+                		l = "-l ";
+                		std::system("cls");
+            		};
+
+            		std::string command = "ping " + ip + " " + n + how_many + " " + l + size;
+
+            		std::system(command.c_str());
+
+            		std::cout << "\nType exit or back: ";
+            		std::cin >> wait;
+            		wait = lower_case(wait);
+            		if(wait == "exit") {
+                		std::cout << "\n	Bye!!\n";
+                		break;
+            		} else if(wait == "back") {
+                		os_clear(os);
+                		continue;
+            		} else {
+                		unknownC();
+    					continue;
+            		};
+        		};
+        		// end Quick_Ping_Tool	
+			};
+			//end Network_Tools
+			
+			//start of Hashing_Tools
+			if(scripts == "2"){
+				intro_clear(os);
+        		art_draw();
+        		std::string hashing = "";
+				std::cout << "\nHashing_Tools";
+				std::cout << "\n  1.Hash_Identifier[B]\n";
+				
+				std::cout << "\nChoose: ";
+				std::cin >> hashing;
+				hashing = lower_case(hashing);
+				if(hashing == "back"){
+                	os_clear(os);
+                	continue;
+				};
+				// Hash_Identifier_Tool
+        		if(hashing == "1") {
+        			system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/hash-id.py");
+            		os_clear(os);
+            		system("python3 hash-id.py");
+            		if(os == "windows"){
+            			system("del hash-id.py");
+            			std::string ex = "";
+                		std::cout << "\nType exit or back: ";
+                		std::cin >> ex;
+                		ex = lower_case(ex);
+                		if(ex == "back"){
+                			continue;
+						}else{
+							if(ex == "exit"){
+								std::cout << "\n	Bye!!\n";
+								break;
+							};
+							unknownC();
+							continue;
+						};
+					}else{
+						if(os == "linux"){
+							system("rm hash-id.py");
+							std::string ex = "";
+                			std::cout << "\nType exit or back: ";
+                			std::cin >> ex;
+                			ex = lower_case(ex);
+                			if(ex == "back"){
+                				continue;
+							}else{
+								if(ex == "exit"){
+									std::cout << "\n	Bye!!\n";
+									break;
+								};
+								unknownC();
+								continue;
+							};
+						};
+					};
 				}else{
-					if(ex == "exit"){
+					if(hashing == "exit"){
 						std::cout << "\n	Bye!!\n";
 						break;
 					};
 					unknownC();
 					continue;
 				};
-                
+        		// end Hash_Identifier			
 			}else{
-				if(os == "linux"){
-					system("rm hash-id.py");
-					std::string ex = "";
-                	std::cout << "\nType exit or back: ";
-                	std::cin >> ex;
-                	ex = lower_case(ex);
-                	if(ex == "back"){
-                		continue;
-					}else{
-						if(ex == "exit"){
-							std::cout << "\n	Bye!!\n";
-							break;
-						};
-						unknownC();
-						continue;
-					};
+				if(scripts == "exit"){
+					std::cout << "\n	Bye!!\n";
+					break;
 				};
+				unknownC();
+				continue;
 			};
-		};
-        // end Hash_Identifier
+			// end Hashing_Tools
 
-        // Quick_Ping_Tool
-        if(tool == "4") {
-            os_clear(os);
-            std::cout << "\nWelcome To The Ping Tool\n";
-
-            std::string wait = "";
-            std::string how_many = "";
-            std::string size = "";
-            std::string ip = "";
-
-            std::cout << "What is the ip you want to ping? ";
-            std::cin >> ip;
-
-            std::cout << "How many packets do you want to send? ";
-            std::cin >> how_many;
-
-            std::cout << "How many bytes do you want to send 0-65,500? ";
-            std::cin >> size;
-
-            string n = "";
-            string l = "";
-            if(os == "linux") {
-                n = "-c ";
-                l = "-s ";
-                system("clear");
-            } else if(os == "windows") {
-                n = "-n ";
-                l = "-l ";
-                std::system("cls");
-            };
-
-            std::string command = "ping " + ip + " " + n + how_many + " " + l + size;
-
-            std::system(command.c_str());
-
-            std::cout << "\nType exit or back: ";
-            std::cin >> wait;
-            wait = lower_case(wait);
-            if(wait == "exit") {
-                std::cout << "\n	Bye!!\n";
-                break;
-            } else if(wait == "back") {
-                os_clear(os);
-                continue;
-            } else {
-                unknownC();
-    			continue;
-            };
-        };
-        // end Quick_Ping_Tool
-
-        // start Nmap_autoscan_linux_only
-        if(tool == "5") {
-            if(os == "linux") {
-                system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/autoscan.py");
-                system("python3 autoscan.py");
-                system("rm autoscan.py");
-                std::string wait = "";
-                std::cout << "\nType exit or back: ";
-                std::cin >> wait;
-                wait = lower_case(wait);
-                if(wait == "exit") {
-                    std::cout << "\n	Bye!!\n";
-                    break;
-                } else if(wait == "back") {
-                    system("clear");
-                    continue;
-                } else {
-                    unknownC();
-    				continue;
-                };
-            } else if(os == "windows") {
-                std::cout << "Linux Only!!";
-                thread_sleep();
-                continue;
-            };
-        };
-        // end Nmap_autoscan_linux_only
-        
-        if(tool == "6") {
-            std::cout << "\nComing Soon!!";
-            std::cout << "\nPlease Choose Something Else!!";
-            thread_sleep();
-            continue;
-        } else {
-            if(tool == "exit") {
-                std::cout << "\n	Bye!!\n";
-                break;
-            };	
+		}else{
+			if(tool == "exit"){
+				std::cout << "\n	Bye!!\n";
+				break;
+			};
 			unknownC();
-    		continue;	
-        };
-    };
+			continue;
+		};
+		//end Scripting_Tools	
+			
+    };//end of while loop  
     return 0;
 };
 
-std::string version = "v1.6.4";
+std::string version = "v1.6.5";
 
 void art_draw(){ //function that shows the art and the creators
 	std::cout << R"(
@@ -402,13 +470,13 @@ void print_intro() //function that shows the menu
     std::cout << "\nChoose a tool: ";
     // List of Tools
     std::cout << "\n--------------------------          ---------------------------           ---------------------------";
-    std::cout << "\n  1.Privesc_List[B]                   2.Reverse_Shells_List[B]             3.hash_Identifier_Tool[B]";
+    std::cout << "\n    1.Privesc_List                     2.Reverse_Shells_List                  3.Scripting_Tools";
     std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
     
     std::cout << "\n--------------------------          ---------------------------           ---------------------------";
-    std::cout << "\n  4.Quick_Ping_Tool[B]                5.Nmap_autoscan_Tool[L]                     6.Coming_Soon";
+    std::cout << "\n       Coming_Soon                          Coming_Soon                      	  Coming_Soon";
     std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
-    std::cout << "        B = Both                             L = Linux                              W = Windows\n";
+    std::cout << "       [B] = Both                           [L] = Linux                           [W] = Windows\n";
 };
 
 string input(string text) //function that ask for what operating system your running 
