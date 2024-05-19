@@ -15,8 +15,7 @@ g++ Multi2Tool.cpp -o Multi2Tool
 ## How to Use
 Using Multi2Tool is straightforward:
 Navigate through the program by typing the corresponding number of the tool/script you want to use or obtain.
-To exit the program, simply type "exit". To go back to the previous menu, type "back".
-To update the program, type "update".
+To exit the program, simply press "Ctrl + C". To go back to the previous section, type "back". To go back to the menu type "menu". To update the program, type "update".
 
 ## Disclaimer
 Multi2Tool is intended for educational and authorized testing purposes only. Misuse of this tool may violate applicable laws and regulations. The developers and contributors are not responsible for any illegal or unethical use of this software.
