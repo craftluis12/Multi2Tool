@@ -5,10 +5,9 @@
 Multi2Tool is a versatile program designed to enhance flexibility during penetration testing. It offers various functionalities including a hash identifier script (credit goes to Zion3R), an automated Nmap scanning script, a simplified ping tool (utilizing system ping), and a collection of scripts for privilege escalation and reverse shells. More tools and scripts are planned for future updates.
 
 ## How to Install
-To install Multi2Tool, follow these steps:
-1. Download the Multi2Tool.cpp file.
-2. Compile it using g++ compiler with the following command:
+To install Multi2Tool, Copy and Paste the command:
 ```bash
+curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/Multi2Tool.cpp
 g++ Multi2Tool.cpp -o Multi2Tool
 ```
 
