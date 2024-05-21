@@ -69,14 +69,21 @@ int main()
 			};
 			//end updating system
 			
-	        //start of Privesc_List      
+	        //start of Privesc_List   
+			std::string priv = "";
 			while(tool == "1"){//start of second while loop
+				
+				if(priv == "menu"){
+					break;
+				};
+				
 		        intro_clear(os);
 		        art_draw();
 		        std::string privesc = "";
 		        std::cout << "\nPrivesc_List\n";
 				std::cout << "  1.Windows_scripts\n";
 				std::cout << "  2.Linux_scripts\n";
+				
 		        std::cout << "\nPrivesc-> ";
 		        std::cin >> privesc;
 		        privesc = lower_case(privesc);
@@ -87,48 +94,31 @@ int main()
 				};
 				
 				//windows scripts
-				if(privesc == "1"){
+				while(privesc == "1"){
 		        	intro_clear(os);
 		        	art_draw();
 					std::cout << "\nWindows_Privesc_Scripts\n";
 					std::cout << "  1.WinPeas.exe\n";
 						
 					std::cout << "\nPrivesc-> ";
-		            std::cin >> privesc;
-		            privesc = lower_case(privesc);
+		            std::cin >> priv;
+		            priv = lower_case(priv);
 		            
-		            if(privesc == "back"){
-		            	os_clear(os);
-		                continue;
-		            };
-		            
-		            if(privesc == "1"){
+		            if(priv == "1"){
 		                system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/download/20240421-825f642d/winPEASx64.exe");
-		                std::string ex = "";
-		                std::cout << "Type menu or back: ";
-		                std::cin >> ex;
-		                ex = lower_case(ex);
-		                if(ex == "back") {
-		                    os_clear(os);
-		                    continue;
-		                }else{
-		                	if(ex == "menu"){
-		                		break;
-							};
-							unknownC();
-		    				continue;
-						};
+		                continue;
 					}else{
-						if(privesc == "menu"){
-		                	break;
+						if(priv == "back"){
+							break;
+						}else if(priv == "menu"){
+							break;
 						};
-						unknownC();
-						continue;         		
+						continue;	
 					};
 				};//end of windows scripts
 				
-				//linux scripts
-				if(privesc == "2"){
+				//linux scripts'
+				while(privesc == "2"){
 					intro_clear(os);
 		        	art_draw();
 					std::cout << "\nLinux_Privesc_Scripts\n";
@@ -137,91 +127,43 @@ int main()
 					std::cout << "\n  3:lse.sh\n";
 						
 					std::cout << "\nPrivesc-> ";
-		            std::cin >> privesc;
-		            privesc = lower_case(privesc);
-		            
-		            if(privesc == "back") {
-		            	os_clear(os);
-		                continue;
-					};
+		            std::cin >> priv;
+		            priv = lower_case(priv);
 						
-					if(privesc == "1"){
+					if(priv == "1"){
 		                system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
-		                std::string ex = "";
-		                std::cout << "Type menu or back: ";
-		                std::cin >> ex;
-		                ex = lower_case(ex);
-		                if(ex == "back") {
-		                    os_clear(os);
-		                    continue;
-		                }else{
-		                	if(ex == "menu"){
-		                		break;
-							};
-							unknownC();
-		    				continue;
+		                continue;
+		            }else if(priv == "2"){
+		            	system("curl -s -L -O https://raw.githubusercontent.com/rebootuser/LinEnum/c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
+						continue;
+					}else if(priv == "3"){
+						system("curl -s -L -O https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
+						continue;
+					}else{
+						if(priv == "back"){
+							break;
+						}else if(priv == "menu"){
+							break;
 						};
-		            };
-		            
-		            if(privesc == "2"){
-		                system("curl -s -L -O https://raw.githubusercontent.com/rebootuser/LinEnum/c47f9b226d3ce2848629f25fe142c1b2986bc427/LinEnum.sh");
-		                std::string ex = "";
-		                std::cout << "Type menu or back: ";
-		                std::cin >> ex;
-		                ex = lower_case(ex);
-		                if(ex == "back") {
-		                    os_clear(os);
-		                    continue;
-		                } else {
-		                    if(ex == "menu"){
-		                    	break;
-							};
-							unknownC();
-		    				continue;
-		                };
-		            };
-		            
-		            if(privesc == "3") {
-		                system("curl -s -L -O https://raw.githubusercontent.com/diego-treitos/linux-smart-enumeration/eb80976b1d5e4325894644e264d9f91782f29f50/lse.sh");
-		                std::string ex = "";
-		                std::cout << "Type menu or back: ";
-		                std::cin >> ex;
-		                ex = lower_case(ex);
-		                if(ex == "back") {
-		                    os_clear(os);
-		                    continue;
-		                }else{
-		            		if(ex == "menu"){
-		            			break;
-							};
-							unknownC();
-		    				continue;
-						};
-		            }else{
-		            	if(privesc == "menu"){
-		            		break;
-						};
-		            	unknownC();
-		    			continue;
+						continue;
 					};
-						
-				}else{
-					if(privesc == "menu"){
-		            	break;
-					};
-					unknownC();
-		    		continue;
 				};//end of linux scripts
 				//end Privesc_List
 			};//end of second while loop
 	
 	        //start of Reverse_Shells_List
-	        while(tool == "2"){//start of third while loop
-	        	intro_clear(os);
+	        std::string revs = "";
+	        while(tool == "2"){//start of third while loop	  
+				
+				if(revs == "menu"){
+					break;
+				};
+			    
+			    intro_clear(os);
 	        	art_draw();
 	            string reverse = "";
-	            std::cout << "\nReverse_Shells_List\n";
-	            std::cout << "1: PHP_Reverse_Shell\n";
+	            std::cout << "\nReverse_Shells_List";
+	            std::cout << "\n  1.Web_Reverse_shells\n";
 	
 	            std::cout << "\nReverse-> ";
 	            std::cin >> reverse;
@@ -229,37 +171,42 @@ int main()
 	            
 	            if(reverse == "back") {
 	                os_clear(os);
-	                break;
-	            };
-	            
-	            if(reverse == "1") {
-	                system("curl -s -L -O https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
-	                std::string ex = "";
-	                std::cout << "Type menu or back: ";
-	                std::cin >> ex;
-	                ex = lower_case(ex);
-	                if(ex == "back") {
-	                    os_clear(os);
-	                    continue;
-	                } else {
-	                    if(ex == "menu"){
-	                    	break;
-						};
-						unknownC();
-	    				continue;
-	                };
-	            }else{
-	            	if(reverse == "menu"){
-	                    break;
-					};
-					unknownC();
-	    			continue;
+	               	break;
 				};
-	        	//end Reverse_Shells_List
+	            
+	            while(reverse == "1"){
+	            	intro_clear(os);
+	        		art_draw();
+	        		std::cout << "\nWeb_Reverse_shells";
+	            	std::cout << "\n  1.PHP_Reverse_Shell\n";
+					
+					std::cout << "\nweb-shell-> ";
+					std::cin >> revs;
+					revs = lower_case(revs);
+	
+		
+	            	if(revs == "1"){
+	            		system("curl -s -L -O https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/8aa37ebe03d896b432c4b4469028e2bed75785f1/php-reverse-shell.php");
+	  					continue;
+					}else{
+						if(revs == "back"){
+							break;
+						}else if(revs == "menu"){
+							break;
+						};
+						continue;
+					};					
+				};//end Reverse_Shells_List	            
 			};//end of third while loop
 	        			
 			//start of Scripting_Tools
+			std::string net = "";
 			while(tool == "3"){//start of fourth while loop
+			
+				if(net == "menu"){
+					break;
+				};
+			
 				intro_clear(os);
 	        	art_draw();
 	        	std::string scripts = "";
@@ -277,56 +224,50 @@ int main()
 				};
 				
 				//start of Network_Tools
-				if(scripts == "1"){
+				while(scripts == "1"){
 					intro_clear(os);
 	        		art_draw();
-	        		std::string network = "";
 					std::cout << "\nNetwork_Tools";
 					std::cout << "\n  1.Nmap_autoscan[L]";
 					std::cout << "\n  2.Quick_Ping[B]\n";
 					
-					std::cout << "\nNet-Tool->: ";
-					std::cin >> network;
-					network = lower_case(network);
-					
-					if(network == "back"){
-	                	os_clear(os);
-	                	continue;
-					};
+					std::cout << "\nNet-Tool-> ";
+					std::cin >> net;
+					net = lower_case(net);
 					
 					// start Nmap_autoscan_linux_only
-	        		if(network == "1") {
+	        		if(net == "1") {
 	            		if(os == "linux") {
+	            			os_clear(os);
 	                		system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/autoscan.py");
 	                		system("python3 autoscan.py");
 	                		system("rm autoscan.py");
-	                		std::string wait = "";
+	                		
 	                		std::cout << "\nType menu or back: ";
-	                		std::cin >> wait;
-	                		wait = lower_case(wait);
-	                		if(wait == "menu") {
-	                		    break;
-	                		} else if(wait == "back") {
-	                    		system("clear");
-	                   		 	continue;
-	                		} else {
-	                    		unknownC();
-	    						continue;
-	                		};
-	            		} else if(os == "windows") {
+	            			std::cin >> net;
+	            			net = lower_case(net);
+	            			
+	            			if(net == "back"){
+	            				continue;
+							}else if(net == "menu"){
+								break;
+							}else{
+								continue;
+							};
+	            			
+	            		}else if(os == "windows") {
 	                		std::cout << "Linux Only!!";
 	                		thread_sleep();
 	                		continue;
-	            		};
-	        		}else{
-	        			if(network == "menu"){
-	                		break;
-						};
-					};
-	        		// end Nmap_autoscan_linux_only
-	        		
-	        		// Quick_Ping_Tool
-	        		if(network == "2") {
+	            		}else{
+	            			if(net == "back"){
+	            				break;
+							}else if(net == "menu"){
+								break;
+							};
+							continue;
+						};// end Nmap_autoscan_linux_only
+	        		}else if(net == "2"){// Quick_Ping_Tool
 	            		os_clear(os);
 	            		std::cout << "\nWelcome To The Ping Tool\n";
 	
@@ -361,93 +302,299 @@ int main()
 	            		std::system(command.c_str());
 	
 	            		std::cout << "\nType menu or back: ";
-	            		std::cin >> wait;
-	            		wait = lower_case(wait);
-	            		if(wait == "menu") {
-	                		break;
-	            		} else if(wait == "back") {
-	                		os_clear(os);
-	                		continue;
-	            		} else {
-	                		unknownC();
-	    					continue;
-	            		};
-	        		};
-	        		// end Quick_Ping_Tool	
-				};
-				//end Network_Tools
+	            		std::cin >> net;
+	            		net = lower_case(net);
+	            		if(net == "back"){
+	            			continue;
+						}else if(net == "menu"){
+							break;
+						}else{
+							continue;
+						};
+					}else{
+						if(net == "back"){
+							break;	
+						}else if(net =="menu"){
+							break;
+						};
+						continue;
+					};// end Quick_Ping_Tool
+				};//end Network_Tools
+				
 				
 				//start of Hashing_Tools
-				if(scripts == "2"){
+				while(scripts == "2"){
 					intro_clear(os);
 	        		art_draw();
-	        		std::string hashing = "";
 					std::cout << "\nHashing_Tools";
 					std::cout << "\n  1.Hash_Identifier[B]\n";
 					
-					std::cout << "\nHash->: ";
-					std::cin >> hashing;
-					hashing = lower_case(hashing);
+					std::cout << "\nHash-> ";
+					std::cin >> net;
+					net = lower_case(net);
+
 					
-					if(hashing == "back"){
-	                	os_clear(os);
-	                	continue;
-					};
-					
-	        		if(hashing == "1") {
+	        		if(net == "1"){
 	        			system("curl -s -L -O https://raw.githubusercontent.com/craftluis12/Multi2Tool/main/script_files/hash-id.py");
 	            		os_clear(os);
 	            		system("python3 hash-id.py");
 	            		if(os == "windows"){
 	            			system("del hash-id.py");
-	            			std::string ex = "";
 	                		std::cout << "\nType menu or back: ";
-	                		std::cin >> ex;
-	                		ex = lower_case(ex);
-	                		if(ex == "back"){
+	                		std::cin >> net;
+	                		net = lower_case(net);
+	                		if(net == "back"){
 	                			continue;
+							}else if(net == "menu"){
+								break;
 							}else{
-								if(ex == "menu"){
-									break;
-								};
-								unknownC();
 								continue;
 							};
 						}else{
 							if(os == "linux"){
 								system("rm hash-id.py");
-								std::string ex = "";
 	                			std::cout << "\nType menu or back: ";
-	                			std::cin >> ex;
-	                			ex = lower_case(ex);
-	                			if(ex == "back"){
+	                			std::cin >> net;
+	                			net = lower_case(net);
+	                			if(net == "back"){
 	                				continue;
+								}else if(net == "menu"){
+									break;
 								}else{
-									if(ex == "menu"){
-										break;
-									};
-									unknownC();
 									continue;
 								};
 							};
 						};
+					}else if(net == "back"){
+						break;
+					}else if(net == "menu"){
+						break;
 					}else{
-						if(hashing == "menu"){
+						continue;
+					};// end Hashing_Tools
+				};//end Scripting_Tools
+			};//end of fourth while loop
+			
+			std::string info = "";
+			while(tool == "4"){//start of fifth while loop
+
+				if(info == "menu"){
+					break;
+				};
+				
+				intro_clear(os);
+	        	art_draw();	        	
+				std::string kali = "";
+				std::cout << "\nKali-Tools";
+				std::cout << "\n  1.Information Gathering";
+				std::cout << "\n  2.Vulnerability Analysis";
+				std::cout << "\n  3.Web Application Analysis";
+				std::cout << "\n  4.Password Attacks";
+				std::cout << "\n  5.Wireless Attacks";
+				std::cout << "\n  6.Exploitation Tools";
+				std::cout << "\n  7.Sniffing & Spoofing\n";
+				
+				std::cout << "\nKali_Tools-> ";
+				std::cin >> kali;
+				kali = lower_case(kali);
+				
+				if(kali == "back"){
+					os_clear(os);
+					break;
+				};
+				
+				while(kali == "1"){//start of Information Gathering
+					intro_clear(os);
+		        	art_draw();
+		        	std::cout << "\nInformation Gathering";
+		        	std::cout << "\n  1.Nmap";
+		        	std::cout << "\n  2.Enum4linux";
+		        	std::cout << "\n  3.Recon-ng";
+		        	std::cout << "\n  4.Hping3\n";
+		        	
+		        	std::cout << "\nInfo_Gather-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install nmap -y");
+	            		continue;
+					}else if(info == "2"){
+						system("apt-get install enum4linux -y");
+						continue;
+					}else if(info == "3"){
+						system("apt-get install recon-ng -y");
+						continue;
+					}else if(info == "4"){
+						system("apt-get install hping3 -y");
+						continue;
+					}else{
+						if(info == "back"){
+							break;
+						}else if(info == "menu"){
 							break;
 						};
-						unknownC();
 						continue;
 					};
-	        		// end Hash_Identifier			
-				}else{
-					if(scripts == "menu"){
+				};//end of Information Gathering
+				
+				while(kali == "2"){//start of Vulnerability Analysis
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nVulnerability Analysis";
+					std::cout << "\n  1.Nessus\n";
+		        	
+		        	std::cout << "\nVuln_A-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install nessus -y");
+	            		continue;
+					}else if(info == "back"){
 						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
 					};
-					unknownC();
-					continue;
-				};// end Hashing_Tools
-				//end Scripting_Tools
-			};//end of fourth while loop
+				};//end of Vulnerability Analysis
+				
+				while(kali == "3"){//start of Web Application Analysis
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nWeb Application Analysis";
+					std::cout << "\n  1.Nikto";
+					std::cout << "\n  2.Burpsuit";
+					std::cout << "\n  3.Gobuster\n";
+		        	
+		        	std::cout << "\nWeb_App-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install nikto -y");
+	            		continue;
+					}else if(info == "2"){
+						system("apt-get install burpsuite -y");
+	            		continue;
+					}else if(info == "3"){
+						system("apt-get install gobuster -y");
+	            		continue;
+					}else if(info == "back"){
+						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
+					};
+				};//end of Web Application Analysis
+				
+				while(kali == "4"){//start of Password Attacks
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nPassword Attacks";
+					std::cout << "\n  1.John";
+					std::cout << "\n  2.Hydra";
+					std::cout << "\n  3.Hashcat\n";
+		        	
+		        	std::cout << "\nPass_Att-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install john -y");
+	            		continue;
+					}else if(info == "2"){
+						system("apt-get install hydra -y");
+	            		continue;
+					}else if(info == "3"){
+						system("apt-get install hashcat -y");
+	            		continue;
+					}else if(info == "back"){
+						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
+					};
+				};//end of Password Attacks
+				
+				while(kali == "5"){//start of Wireless Attacks
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nWireless Attacks";
+					std::cout << "\n  1.Aircrack-ng\n";
+		        	
+		        	std::cout << "\nWireless_Att-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install aircrack-ng -y");
+	            		continue;
+					}else if(info == "back"){
+						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
+					};
+				};//end of Wireless Attacks
+				
+				while(kali == "6"){//start of Exploitation Tools
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nExploitation Tools";
+					std::cout << "\n  1.Metasploit Framework\n";
+		        	//std::cout << "\n  2.Searchsploit"; //coming soon
+		        	
+		        	std::cout << "\nExploit-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install metasploit-framework -y");
+	            		continue;
+					}else if(info == "back"){
+						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
+					};
+				};//end of Exploitation Tools
+				
+				while(kali == "7"){//start of Snifiing & Spoofing
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nSnifiing & Spoofing";
+					std::cout << "\n  1.Wireshark";
+					std::cout << "\n  2.Tcpdump";
+					std::cout << "\n  3.Ettercap-both\n";
+		        	
+		        	std::cout << "\nSnif_Spof-> ";
+	            	std::cin >> info;
+	            	info = lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get install wireshark -y");
+	            		continue;
+					}else if(info == "2"){
+						system("apt-get install tcpdump -y");
+	            		continue;
+					}else if(info == "3"){
+						system("apt-get install ettercap-text-only -y && apt-get install ettercap-graphical -y");
+	            		continue;
+					}else if(info == "back"){
+						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
+					};
+				};//end of Snifiing & Spoofing	
+			};//end of fifth while loop
 	    };//end of first while loop  
     } catch (...) {
         std::cout << "\nAn unexpected error occurred. Exiting..." << std::endl;
@@ -456,7 +603,7 @@ int main()
     return 0;
 };
 
-std::string version = "v1.7.0";
+std::string version = "v1.7.7";
 
 void art_draw(){ //function that shows the art and the creators
 	std::cout << R"(
@@ -476,11 +623,11 @@ void print_intro() //function that shows the menu
     std::cout << "\nChoose a tool: ";
     // List of Tools
     std::cout << "\n--------------------------          ---------------------------           ---------------------------";
-    std::cout << "\n    1.Privesc_List                     2.Reverse_Shells_List                  3.Scripting_Tools";
+    std::cout << "\n    1.Privesc_List[B]                 2.Reverse_Shells_List[B]                 3.Scripting_Tools[B]";
     std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
     
     std::cout << "\n--------------------------          ---------------------------           ---------------------------";
-    std::cout << "\n       Coming_Soon                          Coming_Soon                      	  Coming_Soon";
+    std::cout << "\n      4.Kali_Tools[L]                       Coming_Soon                      	   Coming_Soon";
     std::cout << "\n--------------------------          ---------------------------           ---------------------------\n";
     std::cout << "       [B] = Both                           [L] = Linux                           [W] = Windows\n";
 };
