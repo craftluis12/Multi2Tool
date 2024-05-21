@@ -13,7 +13,7 @@ void intro_clear(string os);
 void print_intro();
 void os_clear(string os);
 void thread_sleep();
-string lower_case(string word);
+void lower_case(string &word);
 string input(string text);
 
 int main()
@@ -23,20 +23,24 @@ int main()
 	
 	
 	try {
- 		string os = input("What operating system are you using?: ");
-		os = lower_case(os);
+		
+		std::string os = "";
+		
+		#ifdef _WIN32
+        	os = "windows";
+    	#elif __linux__
+        	os = "linux";
+    	#else
+        	std::cout << "Unknown Operating System" << std::endl;
+    	#endif
+    	
 	    //for(auto& x : os) { // This code Lowers any upper case letters
 	    //    x = tolower(x);
 	    //}; 
 	
 	    intro_clear(os);
-	    bool should_run = true;
+	    bool should_run = os == "windows" || os == "linux";
 	    while(should_run) { //start of first while loop
-	        if(os != "windows" && os != "linux") {
-	            std::cout << "Error Unknow OS System!!\n";
-	            os = input("What operating system are you using?: ");
-	            continue;
-	        };
 			
 	        intro_clear(os);
 	        art_draw();
@@ -46,7 +50,7 @@ int main()
 	        std::string tool = "";
 	        std::cout << "\nChoose: ";
 	        std::cin >> tool;
-	        tool = lower_case(tool);
+	        lower_case(tool);
 	        // end of choosing tool
 	        
 	        if(tool == "exit"){
@@ -86,7 +90,7 @@ int main()
 				
 		        std::cout << "\nPrivesc-> ";
 		        std::cin >> privesc;
-		        privesc = lower_case(privesc);
+		        lower_case(privesc);
 		        
 		        if(privesc == "back") {
 		        	os_clear(os);
@@ -102,7 +106,7 @@ int main()
 						
 					std::cout << "\nPrivesc-> ";
 		            std::cin >> priv;
-		            priv = lower_case(priv);
+		            lower_case(priv);
 		            
 		            if(priv == "1"){
 		                system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/download/20240421-825f642d/winPEASx64.exe");
@@ -113,7 +117,7 @@ int main()
 						}else if(priv == "menu"){
 							break;
 						};
-						continue;	
+						continue;
 					};
 				};//end of windows scripts
 				
@@ -128,7 +132,7 @@ int main()
 						
 					std::cout << "\nPrivesc-> ";
 		            std::cin >> priv;
-		            priv = lower_case(priv);
+		            lower_case(priv);
 						
 					if(priv == "1"){
 		                system("curl -s -L -O https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh");
@@ -167,7 +171,7 @@ int main()
 	
 	            std::cout << "\nReverse-> ";
 	            std::cin >> reverse;
-	            reverse = lower_case(reverse);
+	            lower_case(reverse);
 	            
 	            if(reverse == "back") {
 	                os_clear(os);
@@ -182,7 +186,7 @@ int main()
 					
 					std::cout << "\nweb-shell-> ";
 					std::cin >> revs;
-					revs = lower_case(revs);
+					lower_case(revs);
 	
 		
 	            	if(revs == "1"){
@@ -216,7 +220,7 @@ int main()
 					
 				std::cout << "\nScripts-> ";
 	            std::cin >> scripts;
-	            scripts = lower_case(scripts);
+	            lower_case(scripts);
 	            
 	            if(scripts == "back"){
 	                os_clear(os);
@@ -233,7 +237,7 @@ int main()
 					
 					std::cout << "\nNet-Tool-> ";
 					std::cin >> net;
-					net = lower_case(net);
+					lower_case(net);
 					
 					// start Nmap_autoscan_linux_only
 	        		if(net == "1") {
@@ -245,7 +249,7 @@ int main()
 	                		
 	                		std::cout << "\nType menu or back: ";
 	            			std::cin >> net;
-	            			net = lower_case(net);
+	            			lower_case(net);
 	            			
 	            			if(net == "back"){
 	            				continue;
@@ -303,7 +307,7 @@ int main()
 	
 	            		std::cout << "\nType menu or back: ";
 	            		std::cin >> net;
-	            		net = lower_case(net);
+	            		lower_case(net);
 	            		if(net == "back"){
 	            			continue;
 						}else if(net == "menu"){
@@ -331,7 +335,7 @@ int main()
 					
 					std::cout << "\nHash-> ";
 					std::cin >> net;
-					net = lower_case(net);
+					lower_case(net);
 
 					
 	        		if(net == "1"){
@@ -342,7 +346,7 @@ int main()
 	            			system("del hash-id.py");
 	                		std::cout << "\nType menu or back: ";
 	                		std::cin >> net;
-	                		net = lower_case(net);
+	                		lower_case(net);
 	                		if(net == "back"){
 	                			continue;
 							}else if(net == "menu"){
@@ -355,7 +359,7 @@ int main()
 								system("rm hash-id.py");
 	                			std::cout << "\nType menu or back: ";
 	                			std::cin >> net;
-	                			net = lower_case(net);
+	                			lower_case(net);
 	                			if(net == "back"){
 	                				continue;
 								}else if(net == "menu"){
@@ -396,7 +400,7 @@ int main()
 				
 				std::cout << "\nKali_Tools-> ";
 				std::cin >> kali;
-				kali = lower_case(kali);
+				lower_case(kali);
 				
 				if(kali == "back"){
 					os_clear(os);
@@ -414,7 +418,7 @@ int main()
 		        	
 		        	std::cout << "\nInfo_Gather-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install nmap -y");
@@ -446,7 +450,7 @@ int main()
 		        	
 		        	std::cout << "\nVuln_A-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install nessus -y");
@@ -470,7 +474,7 @@ int main()
 		        	
 		        	std::cout << "\nWeb_App-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install nikto -y");
@@ -500,7 +504,7 @@ int main()
 		        	
 		        	std::cout << "\nPass_Att-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install john -y");
@@ -528,7 +532,7 @@ int main()
 		        	
 		        	std::cout << "\nWireless_Att-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install aircrack-ng -y");
@@ -551,7 +555,7 @@ int main()
 		        	
 		        	std::cout << "\nExploit-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install metasploit-framework -y");
@@ -575,7 +579,7 @@ int main()
 		        	
 		        	std::cout << "\nSnif_Spof-> ";
 	            	std::cin >> info;
-	            	info = lower_case(info);
+	            	lower_case(info);
 	            	
 	            	if(info == "1"){
 	            		system("apt-get install wireshark -y");
@@ -595,7 +599,7 @@ int main()
 					};
 				};//end of Snifiing & Spoofing	
 			};//end of fifth while loop
-	    };//end of first while loop  
+	    };//end of first while loop
     } catch (...) {
         std::cout << "\nAn unexpected error occurred. Exiting..." << std::endl;
     };
@@ -603,7 +607,7 @@ int main()
     return 0;
 };
 
-std::string version = "v1.7.7";
+std::string version = "v1.8.0";
 
 void art_draw(){ //function that shows the art and the creators
 	std::cout << R"(
@@ -669,13 +673,12 @@ void thread_sleep() { //function to sleep the program
     std::this_thread::sleep_for(std::chrono::milliseconds(1100));
 };
 
-string lower_case(string word) //function grabs input then lowers every letter to lowercase
-{
-    string c = "";
-    for(int i = 0; i < word.length(); i++) {
-        c += tolower(word[i]);
-    };
-    return std::move(c);
+/*function takes input and lowers every letter to lowercase*/
+void lower_case(string &word){
+  for (unsigned i = 0; i < word.length(); i++) {
+    // tolower returns a ascii int (char) solves this
+    word[i] = (char)tolower(word[i]);
+  };
 };
 
 void signal_handler(int signal) {
