@@ -216,7 +216,8 @@ int main()
 	        	std::string scripts = "";
 				std::cout << "\nScripting_Tools";
 				std::cout << "\n  1.Network_Tools";
-				std::cout << "\n  2.Hashing_Tools\n";
+				std::cout << "\n  2.Hashing_Tools";
+				std::cout << "\n  3.Cracking_Tools\n";
 					
 				std::cout << "\nScripts-> ";
 	            std::cin >> scripts;
@@ -375,8 +376,120 @@ int main()
 						break;
 					}else{
 						continue;
-					};// end Hashing_Tools
-				};//end Scripting_Tools
+					};
+				};// end Hashing_Tools
+				
+				//start of Cracking_Tools
+				while(scripts == "3"){
+					intro_clear(os);
+	        		art_draw();
+					std::cout << "\nCracking_Tools";
+					std::cout << "\n  1.Hydra_SSH[L]\n";
+					
+					std::cout << "\nCrack-Tool-> ";
+					std::cin >> net;
+					lower_case(net);
+					
+					if(net == "1"){//start of hydra tool
+						if(os == "linux"){
+							os_clear(os);
+						
+							std::cout << "\nWelcome to Hydra!\n";
+							
+							std::string restore_file = "";
+							std::string yes_or_no_1 = "";
+							std::string yes_or_no_2 = "";
+							std::string username = "";
+		            		std::string password = "";
+		            		std::string username_list = "";
+		            		std::string password_list = "";
+		            		std::string ip = "";
+		            		std::string port = "";
+		            		std::string service = "";
+		            		
+		            		
+		            		std::cout << "\nDo you want to open the hydra.restore file Y/N: ";
+		            		std::cin >> restore_file;
+		            		lower_case(restore_file);
+		            		
+		            		if(restore_file == "Y"){
+		            			std::system("hydra -R hydra.restore");
+		            			continue;
+							};
+		            		
+		            		std::cout << "\nWhat is the IP: ";
+		            		std::cin >> ip;
+		            		lower_case(ip);
+		            		
+		            		std::cout << "\nWhat is the PORT: ";
+		            		std::cin >> port;
+		            		lower_case(port);
+		            		
+		            		std::cout << "\nWhat is the service your attacking: ";
+		            		std::cin >> service;
+		            		lower_case(service);
+		            		
+		            		std::cout << "\nDo you want to use a User_list Y/N: ";
+		            		std::cin >> yes_or_no_1;
+		            		lower_case(yes_or_no_1);
+		            		
+		            		std::cout << "\nDo you want to use a Pass_list Y/N: ";
+		            		std::cin >> yes_or_no_2;
+		            		lower_case(yes_or_no_2);
+		            		
+		            		if(yes_or_no_1 == "y" && yes_or_no_2 == "y"){
+		            			std::cout << "Username_List: ";
+		            			std::cin >> username_list;
+		            			
+		            			
+		            			std::cout << "Password_List: ";
+		            			std::cin >> password_list;
+		            			
+		            			
+		            			std::string command = "hydra -L " + username_list + " -P " + password_list + " " + ip + " " + service + " -s " + port + " -vV -t 4";
+	
+		            			std::system(command.c_str());
+							}else if(yes_or_no_1 == "n" && yes_or_no_2 == "y"){
+								std::cout << "Username: ";
+		            			std::cin >> username;
+		            			
+		            			
+		            			std::cout << "Password_List: ";
+		            			std::cin >> password_list;
+		            			
+								
+								std::string command = "hydra -l " + username + " -P " + password_list + " " + ip + " " + service + " -s " + port + " -vV -t 4";
+								
+								std::system(command.c_str());
+								thread_sleep();
+									
+							}else if(yes_or_no_1 == "y" && yes_or_no_2 == "n"){
+		            			std::cout << "Username_List: ";
+		            			std::cin >> username_list;
+		            			
+		            			
+		            			std::cout << "Password: ";
+		            			std::cin >> password;
+		            			
+		            		
+		            			std::string command = "hydra -L " + username_list + " -p " + password + " " + ip + " " + service + " -s " + port + " -vV -t 4";
+								std::system(command.c_str());
+							};
+						}else if(os == "windows"){
+	                		std::cout << "Linux Only!!";
+	                		thread_sleep();
+	                		continue;
+						};		
+					}else{
+	            		if(net == "back"){
+	            			break;
+						}else if(net == "menu"){
+							break;
+						};
+						continue;
+					};//end of hydra tool			
+				};//end of Cracking_Tools		
+				//end Scripting_Tools
 			};//end of fourth while loop
 			
 			std::string info = "";
@@ -396,7 +509,8 @@ int main()
 				std::cout << "\n  4.Password Attacks";
 				std::cout << "\n  5.Wireless Attacks";
 				std::cout << "\n  6.Exploitation Tools";
-				std::cout << "\n  7.Sniffing & Spoofing\n";
+				std::cout << "\n  7.Sniffing & Spoofing";
+				std::cout << "\n  8.Linux_Update Options\n";
 				
 				std::cout << "\nKali_Tools-> ";
 				std::cin >> kali;
@@ -598,6 +712,31 @@ int main()
 						continue;
 					};
 				};//end of Snifiing & Spoofing	
+				while(kali == "8"){//start of Full Linux Update
+					intro_clear(os);
+		        	art_draw();
+					std::cout << "\nLinux_Update Options";
+					std::cout << "\n  1.Normal Update";
+					std::cout << "\n  2.Full Update\n";
+		        	
+		        	std::cout << "\nLinuxUP-> ";
+	            	std::cin >> info;
+	            	lower_case(info);
+	            	
+	            	if(info == "1"){
+	            		system("apt-get update -y && apt-get upgrade -y");
+	            		continue;
+					}else if(info == "2"){
+						system("apt-get update -y && apt-get upgrade -y && apt update -y && apt upgrade -y && apt full-upgrade -y");
+	            		continue;
+					}else if(info == "back"){
+						break;
+					}else if(info == "menu"){
+						break;
+					}else{
+						continue;
+					};
+				};//end of Full Linux Update
 			};//end of fifth while loop
 	    };//end of first while loop
     } catch (...) {
