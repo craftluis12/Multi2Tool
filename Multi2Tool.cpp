@@ -746,7 +746,7 @@ int main()
     return 0;
 };
 
-std::string version = "v1.8.0";
+std::string version = "v1.8.3";
 
 void art_draw(){ //function that shows the art and the creators
 	std::cout << R"(
